@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nawart Press</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/foundation-5.5.3.min.css" >
+    <link rel="stylesheet" type="text/css" href="/static/css/slick-1.6.0.css" >
+    <link rel="stylesheet" type="text/css" href="/static/css/slick-theme-1.6.0.css" >
+    <link rel="stylesheet" type="text/css" href="/static/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/googlefonts.play.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/florence.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/icons/favicon-16x16.png">
+    <!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]-->
+    <!-- Add to home screen for Android and modern mobile browsers -->
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#4DBA87">
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="NawartPress">
+    <link rel="apple-touch-icon" href="/static/img/icons/apple-touch-icon-152x152.png">
+    <!-- Add to home screen for Windows -->
+    <meta name="msapplication-TileImage" content="/static/img/icons/msapplication-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <% for (var chunk of webpack.chunks) {
+        for (var file of chunk.files) {
+          if (file.match(/\.(js|css)$/)) { %>
+    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
+  </head>
+  <body>
+    <div id="app"></div>
+    <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
+    <!-- built files will be auto injected -->
+    <script src="/static/js/vendor/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/vendor/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/static/js/vendor/what-input.js"></script>
+    <script src="/static/js/vendor/foundation-5.5.3.min.js"></script>
+    <script src="/static/js/vendor/slick-1.6.0.min.js"></script>
+  </body>
+</html>

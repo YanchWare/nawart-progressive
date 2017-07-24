@@ -1,0 +1,7 @@
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Florence';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Florence Regular'), local('Florence-Regular'), url(../fonts/florence.otf) format('opentype');
+}
