@@ -43,7 +43,7 @@ export default {
   body{
     font-family: 'Play',sans-serif;
     overflow-x: hidden;
-    margin-top: 200px;
+    margin-top: 210px;
   }
   main{
     min-height: 100vh;
@@ -58,7 +58,7 @@ export default {
   }
 
   #top-nav {
-    height: 200px;
+    height: 210px;
   }
 
   .row, hr{

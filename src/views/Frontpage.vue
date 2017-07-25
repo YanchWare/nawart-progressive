@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="row text-center">
-      <hr/>
       <div class="small-12 columns">
         <ArticleExtract/>
       </div>

@@ -1,6 +1,6 @@
 <template>
   <div id="portfolio">
-    <div class="text-center">
+    <div class="text-center hide-for-medium">
       <h2>Portfolio</h2>
     </div>
     <Filters></Filters>
@@ -8,7 +8,7 @@
       <div class="large-8 small-12 columns">
         <Contents></Contents>
       </div>
-      <div class="large-4 columns show-for-large-up">
+      <div class="large-4 columns show-for-large">
         <PortfolioMap></PortfolioMap>
       </div>
     </div>

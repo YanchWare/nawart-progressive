@@ -25,7 +25,6 @@ export default {
 <style scoped>
 #contents{
   text-align: center;
-  background-color: #f2f2f2;
   width: 100%;
   height: 100vh;
   overflow-x: hidden;

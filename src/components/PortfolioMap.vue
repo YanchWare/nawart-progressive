@@ -127,7 +127,6 @@ h2{
 #controls {
   height: 75px;
   width: 30vw;
-  background-color: #f2f2f2;
 }
 #portfolio-map{
   width: 30vw;

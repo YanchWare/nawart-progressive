@@ -26,7 +26,7 @@
       </ul>
       <ul class="vertical menu">
         <li class="off-canvas-menu-item"><a href="#">Tour</a></li>
-        <router-link to="/portfolio">Portfolio</router-link>
+        <li><router-link to="/portfolio">Portfolio</router-link></li>
         <li><a href="#">Login</a></li>
         <li><a href="#">Register</a></li>
         <li><a href="#">Pricing</a></li>
@@ -52,9 +52,9 @@
         <div class="nav-bar-left">
           <ul class="menu">
             <li>
-              <button class="offcanvas-trigger" type="button" data-open="offCanvasLeft">
+              <button class="offcanvas-trigger hide-for-medium" type="button">
                 <span class="offcanvas-trigger-text hide-for-small-only"></span>
-                <div class="hamburger">
+                <div class="hamburger" @click="closeOffCanvas">
                   <span class="line"></span>
                   <span class="line"></span>
                   <span class="line"></span>
@@ -63,8 +63,33 @@
             </li>
           </ul>
         </div>
-        <div class="nav-bar-center">
+        <div class="nav-bar-center text-center">
           <router-link to="/"><img id="header-logo" src="/static/img/NawartLogo_Header.png" alt="" /></router-link>
+
+        <hr>
+        <div class="top-bar show-for-medium" id="responsive-menu">
+          <div class="top-bar-center">
+            <ul class="dropdown menu" data-dropdown-menu>
+              <li><a href="#0" :class="{'active': subIsActive('/parent')}">About</a></li>
+              <li><router-link to="/portfolio" :class="{'active': subIsActive('/portfolio')}">Portfolio</router-link></li>
+              <li><a href="#0" :class="{'active': subIsActive('/parent')}">Magazine</a></li>
+              <li><a href="#0" :class="{'active': subIsActive('/parent')}">Consultancies</a></li>
+              <li><a href="#0" :class="{'active': subIsActive('/parent')}">Visibility NGO</a></li>
+              <li><a href="#0" :class="{'active': subIsActive('/parent')}">Blog</a></li>
+              <li><a href="#0" :class="{'active': subIsActive('/parent')}">Constacts</a></li>
+              <li class="has-submenu">
+                <a href="#0">Language</a>
+                <ul class="submenu menu vertical" data-submenu>
+                  <li><a href="#0">English</a></li>
+                  <li><a href="#0">Italian</a></li>
+                  <li><a href="#0">French</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+
         </div>
         <div class="nav-bar-right">
           <ul class="menu">
@@ -107,17 +132,14 @@ export default {
     ...mapActions([
       'registerNewUser'
     ]),
-    attemptLogon (e) {
-      e.preventDefault()
-      this.$store.dispatch('logon', {email: this.email, password: this.password})
-      this.password = null
-      this.email = null
-      this.securityError = null
+    closeOffCanvas () {
+      window.$('#offCanvasLeft').foundation('toggle')
     },
-    logon (e) {
-      e.preventDefault()
-      window.$('#logon-form')[0].reset()
-      window.$('#logon-modal').foundation('open')
+    subIsActive (input) {
+      const paths = Array.isArray(input) ? input : [input]
+      return paths.some(path => {
+        return this.$route.path.indexOf(path) === 0 // current path starts with this path string
+      })
     }
   },
 
@@ -128,6 +150,30 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.top-bar, .top-bar ul, .top-bar ul a {
+  background-color: #fff;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.top-bar ul a.active {
+  background-color: #000;
+  color: #fff;
+}
+
+hr {
+  margin: 0 !important;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+}
+
+#top-nav button {
+  position: relative;
+  top: -50px;
+}
 
 #top-nav {
   position: fixed;
@@ -147,7 +193,6 @@ export default {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 75px;
 }
 
 .nav-bar .nav-bar-logo {
@@ -161,12 +206,6 @@ export default {
 
 .nav-bar a:hover {
   color: #a8b8c3;
-}
-
-@media screen and (max-width: 39.9375em) {
-  .nav-bar {
-    height: 53.57143px;
-  }
 }
 
 .nav-bar .offcanvas-trigger {
