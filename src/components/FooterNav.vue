@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row full-width-row  text-center">
+    <div class="row full-width-row text-center">
       <div class="small-12 large-offset-2 large-8 columns">
         <div id="mc_embed_signup" class="signup-panel">
           <h4>
@@ -8,7 +8,7 @@
           </h4>
           <form action="//nawartpress.us10.list-manage.com/subscribe/post?u=65b1811724da713522a93f8c8&id=ac34a9f562" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <div id="mc_embed_signup_scroll">
-              <div class="mc-field-group show-for-medium-up">
+              <div class="mc-field-group show-for-large">
                 <div class="row collapse">
                   <div class="small-2 columns icon_newsletter">
                     <span class="prefix"><i class="fa fa-envelope-o"></i></span>
@@ -22,7 +22,7 @@
                 </div>
               </div>
 
-              <div class="mc-field-group show-for-small-only">
+              <div class="mc-field-group hide-for-large">
                 <div class="row collapse">
                   <div class="small-2 columns icon_newsletter">
                     <span class="prefix"><i class="fa fa-envelope-o"></i></span>
