@@ -3,13 +3,13 @@
     <div v-if="newestArticles && allArticles">
       <div class="row text-center">
         <div class="small-12 columns">
-          <ArticleExtract :story="allArticles[newestArticles.articleSlugs[0]]"/>
+          <ArticleExcerpt :story="allArticles[newestArticles.articleSlugs[0]]"/>
         </div>
         <hr/>
       </div>
       <div class="row">
         <div class="large-8 small-12 columns">
-          <FourExtracts/>
+          <FourExcerpts :stories="[allArticles[newestArticles.articleSlugs[1]], allArticles[newestArticles.articleSlugs[2]], allArticles[newestArticles.articleSlugs[3]], allArticles[newestArticles.articleSlugs[4]]]"/>
         </div>
         <div class="large-4 small-12 columns">
           <TwitterWidget/>
@@ -22,14 +22,18 @@
     <div v-else class="loading">
       <Loading/>
     </div>
+    <Magazine/>
+    <ContactsMap/>
   </div>
 </template>
 
 <script>
-import ArticleExtract from '../components/ArticleExtract'
-import FourExtracts from '../components/FourExtracts'
+import ArticleExcerpt from '../components/ArticleExcerpt'
+import FourExcerpts from '../components/FourExcerpts'
 import TwitterWidget from '../components/TwitterWidget'
 import AboutNawart from '../components/AboutNawart'
+import ContactsMap from '../components/ContactsMap'
+import Magazine from '../components/Magazine'
 import Loading from '../components/Loading'
 import { mapGetters } from 'vuex'
 
@@ -49,17 +53,19 @@ export default {
   },
 
   components: {
-    ArticleExtract,
-    FourExtracts,
+    ArticleExcerpt,
+    FourExcerpts,
     TwitterWidget,
     Loading,
-    AboutNawart
+    AboutNawart,
+    ContactsMap,
+    Magazine
   }
 }
 </script>
 
 <style scoped>
   .loading {
-    margin-top: 40vh;
+    margin-top: 70vh;
   }
 </style>

@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import APIWrapper from '../api/wordpress'
+import { getMedia } from '../utilities/apiSupport'
+
 export default {
   name: 'story',
   props: ['story'],
@@ -18,24 +19,11 @@ export default {
     }
   },
   mounted () {
-    this.getMedia()
-  },
-  methods: {
-    getMedia () {
-      APIWrapper.getMedia(this.story.featured_media).then(response => {
-        if (response.entity.media_details) {
-          if (response.entity.media_details.sizes.medium) {
-            this.mediaUrl = response.entity.media_details.sizes.medium.source_url
-          } else if (response.entity.media_details.sizes['post-thumbnail']) {
-            this.mediaUrl = response.entity.media_details.sizes['post-thumbnail'].source_url
-          } else if (response.entity.media_details.sizes.thumbnail) {
-            this.mediaUrl = response.entity.media_details.sizes.thumbnail.source_url
-          }
-        } else {
-          this.mediaUrl = response.entity.source_url
-        }
-      })
-    }
+    getMedia(this.story.featured_media).then(mediaUrl => {
+      this.mediaUrl = mediaUrl
+    }).catch(err => {
+      console.error(err)
+    })
   }
 }
 </script>

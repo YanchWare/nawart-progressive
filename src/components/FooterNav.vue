@@ -1,105 +1,90 @@
 <template>
-  <footer class="page-footer">
-    <a href="#" class="social-icon-button twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span></span></a>
-    <a href="#" class="social-icon-button facebook"><i class="fa fa-facebook" aria-hidden="true"></i><span></span></a>
-    <a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i></i><span></span></a>
-  </footer>
+  <div>
+    <div class="row full-width-row  text-center">
+      <div class="small-12 large-offset-2 large-8 columns">
+        <div id="mc_embed_signup" class="signup-panel">
+          <h4>
+            Subscribe to our newsletter
+          </h4>
+          <form action="//nawartpress.us10.list-manage.com/subscribe/post?u=65b1811724da713522a93f8c8&id=ac34a9f562" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+              <div class="mc-field-group show-for-medium-up">
+                <div class="row collapse">
+                  <div class="small-2 columns icon_newsletter">
+                    <span class="prefix"><i class="fa fa-envelope-o"></i></span>
+                  </div>
+                  <div class="small-6 columns">
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                  </div>
+                  <div class="small-4 columns">
+                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mc-field-group show-for-small-only">
+                <div class="row collapse">
+                  <div class="small-2 columns icon_newsletter">
+                    <span class="prefix"><i class="fa fa-envelope-o"></i></span>
+                  </div>
+                  <div class="small-10 columns">
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                  </div>
+                </div>
+                <div class="row collapse">
+                  <div class="small-12 columns text-centered lower">
+                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                  </div>
+                </div>
+              </div>
+
+              <div id="mce-responses" class="clear">
+                <div class="response" id="mce-error-response" style="display:none"></div>
+                <div class="response" id="mce-success-response" style="display:none"></div>
+              </div>
+              <div style="position: absolute; left: -5000px;">
+                <input type="text" name="b_65b1811724da713522a93f8c8_ac34a9f562" tabindex="-1" value="">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center">
+      or follow us on<br/>
+      <a href="https://www.facebook.com/nawartpress" class="boxed-icon fill facebook icon-3x" target="_blank"><i class="fa fa-facebook"></i></a>
+      <a href="https://www.flickr.com/photos/130959910@N05/" class="boxed-icon fill flickr icon-3x" target="_blank"><i class="fa fa-flickr"></i></a>
+      <a href="http://www.instagram.com/nawart_press" class="boxed-icon fill instagram icon-3x" target="_blank"><i class="fa fa-instagram"></i></a>
+      <a href="https://twitter.com/NawartPress" class="boxed-icon fill twitter icon-3x" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://www.youtube.com/channel/UChK3l3IZALtHHGwb4XAsEhA" class="boxed-icon fill youtube icon-3x" target="_blank"><i class="fa fa-youtube"></i></a>
+      <a href="https://soundcloud.com/nawart-press" class="boxed-icon fill soundcloud icon-3x" target="_blank"><i class="fa fa-soundcloud"></i></a>
+      <a href="/feed" class="boxed-icon fill pinterest icon-3x" target="_blank"><i class="fa fa-rss"></i></a>
+    </p>
+    <p></p>
+    <br/>
+  </div>
 </template>
 
-<script>
-export default {
-  name: 'footerNav',
-  data () {
-    return {
-    }
-  }
-}
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-footer{
-    background: rgb(36,70,85);
-    background: rgba(36,70,85);
-    text-align: center;
+.signup-panel {
+	padding: 15px;
 }
 
-
-.social-icon-button {
-  border-radius: 3.6rem;
-  width: 3.6rem;
-  height: 3.6rem;
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  font-size: 2rem;
-  background: none;
+.signup-panel i {
+	font-size: 30px;
+	line-height: 50px;
+	color: #999;
 }
 
-.social-icon-button + .social-icon-button {
-  margin-left: 0.25rem;
+.signup-panel form input, .signup-panel form span {
+	height: 50px;
+	width: 100%;
 }
 
-.social-icon-button .fa {
-  background: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  z-index: 1;
-  line-height: 3.6rem;
-  transition: all 0.3s ease-in-out;
-}
-
-.social-icon-button span {
-  display: block;
-  border-radius: 0;
-  width: 0;
-  height: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  transition: all 0.3s ease-in-out;
-}
-
-.social-icon-button:hover .fa {
-  color: #fefefe;
-}
-
-.social-icon-button:hover span {
-  display: block;
-  border-radius: 3.6rem;
-  width: 3.6rem;
-  height: 3.6rem;
-}
-
-.social-icon-button.gplus {
-  color: #dd4b39;
-}
-
-.social-icon-button.gplus span {
-  background-color: #dd4b39;
-}
-
-.social-icon-button.twitter {
-  color: #55acee;
-}
-
-.social-icon-button.twitter span {
-  background-color: #55acee;
-}
-
-.social-icon-button.facebook {
-  color: #3b5998;
-}
-
-.social-icon-button.facebook span {
-  background-color: #3b5998;
+.signup-panel .icon_newsletter {
+	background-color: #eee;
+	border: 1px dashed #ccc;
 }
 
 </style>

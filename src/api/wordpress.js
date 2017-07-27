@@ -2,11 +2,12 @@ import rest from 'rest'
 import mime from 'rest/interceptor/mime'
 
 const client = rest.wrap(mime)
-const filterEndpoint = 'http://nawartpress.com/wp-json/wp/v2/categories?page='
+const filterEndpoint = 'http://nawartpress.com/wp-json/wp/v2/categories'
 const articleEndpoint = 'http://nawartpress.com/wp-json/wp/v2/posts'
 
 const mediaEndpoint = 'http://nawartpress.com/wp-json/wp/v2/media/'
 
+// TODO: Cache in IndexDB
 const getMedia = (mediaId) => {
   return client({
     path: mediaEndpoint + mediaId,
@@ -18,6 +19,18 @@ const getFilters = (page) => {
   return client({
     path: filterEndpoint + page,
     method: 'GET'
+  })
+}
+
+// TODO: Cache in IndexDB
+const getCategories = (categoryIds) => {
+  return categoryIds.map(categoryId => {
+    if (categoryId !== 1) {
+      return client({
+        path: filterEndpoint + '/' + categoryId,
+        method: 'GET'
+      })
+    }
   })
 }
 
@@ -37,5 +50,6 @@ const getLatestArticles = (allArticles) => {
 module.exports = {
   getMedia,
   getFilters,
-  getLatestArticles
+  getLatestArticles,
+  getCategories
 }

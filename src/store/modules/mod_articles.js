@@ -24,10 +24,9 @@ const actions = {
       console.error(err)
     })
     articlesDb.get(NEWEST_ARTICLES_DBKEY).then(newestArticles => {
+      commit(types.NEWEST_ARTICLES_LOADED, newestArticles)
       if (!newestArticles || !newestArticles.articleSlugs || (new Date().getTime() - newestArticles.lastUpdate) > CACHE_EXPIRY_MS) {
         actions.updateNewestArticles({ commit })
-      } else {
-        commit(types.NEWEST_ARTICLES_LOADED, newestArticles)
       }
     }).catch(err => {
       console.error(err)

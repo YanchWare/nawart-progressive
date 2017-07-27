@@ -52,6 +52,20 @@ export default {
       text-decoration: underline;
   }
 
+  a {
+    color: #000;
+    transition: 0.2s;
+  }
+
+  a:hover {
+    color: #ef2673;
+    transition: 0.2s;
+  }
+
+  .button, .button:hover{
+    background-color: #ef2673;
+  }
+
   h1, h2, h3, h4, h5, h6, nav {
     text-transform: uppercase;
     font-family: Florence;
