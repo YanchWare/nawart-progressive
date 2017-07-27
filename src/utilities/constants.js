@@ -1,5 +1,14 @@
 const FACEBOOK_APP_ID = 'FacebookAppId'
 
+const CACHE_EXPIRY_MS = 1 * 3600 * 1000 // 1 hour
+
+// Local database keys
+const NEWEST_ARTICLES_DBKEY = 'NEWEST_ARTICLES_DBKEY'
+const ALL_ARTICLES_DBKEY = 'ALL_ARTICLES_DBKEY'
+
 module.exports = {
+  NEWEST_ARTICLES_DBKEY,
+  ALL_ARTICLES_DBKEY,
+  CACHE_EXPIRY_MS,
   FACEBOOK_APP_ID
 }

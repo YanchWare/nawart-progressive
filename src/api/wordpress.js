@@ -3,7 +3,7 @@ import mime from 'rest/interceptor/mime'
 
 const client = rest.wrap(mime)
 const filterEndpoint = 'http://nawartpress.com/wp-json/wp/v2/categories?page='
-const articleEndpoint = 'http://nawartpress.com/wp-json/wp/v2/posts?per_page=100&page='
+const articleEndpoint = 'http://nawartpress.com/wp-json/wp/v2/posts'
 
 const mediaEndpoint = 'http://nawartpress.com/wp-json/wp/v2/media/'
 
@@ -21,9 +21,15 @@ const getFilters = (page) => {
   })
 }
 
-const getArticles = (page) => {
+const getLatestArticles = (allArticles) => {
+  const articlesIds = allArticles ? Object.keys(allArticles).reduce((previous, current) => {
+    if (current && current.id) {
+      previous.push(current.id)
+    }
+    return previous
+  }, []) : {}
   return client({
-    path: articleEndpoint + page,
+    path: articleEndpoint + (articlesIds.count > 0 ? '?exclude=' + articlesIds.toString().replace(/\[\]/g, '') : ''),
     method: 'GET'
   })
 }
@@ -31,5 +37,5 @@ const getArticles = (page) => {
 module.exports = {
   getMedia,
   getFilters,
-  getArticles
+  getLatestArticles
 }

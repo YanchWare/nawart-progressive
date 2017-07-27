@@ -1,43 +1,76 @@
 import apiWrapper from '../../api/wordpress'
 import * as types from '../mutation-types'
+import { articlesDb } from '../../utilities/localDatabaseHandler'
+import { ALL_ARTICLES_DBKEY, NEWEST_ARTICLES_DBKEY, CACHE_EXPIRY_MS } from '../../utilities/constants'
 
 // initial state
 const state = {
-  all: []
+  allArticles: null,
+  newestArticles: null
 }
 
 // getters
 const getters = {
-  allArticles: state => state.all
-}
-
-function getArticlesWorker (commit) {
-  apiWrapper.getArticles(1).then(function (response) {
-    let totalPages = response.headers['X-Wp-Totalpages']
-    for (let i = 2; i <= totalPages; i++) {
-      apiWrapper.getArticles(i).then(function (response) {
-        commit(types.INIT_ARTICLES, response.entity)
-      })
-    }
-    commit(types.INIT_ARTICLES, response.entity)
-  })
+  allArticles: state => state.allArticles,
+  newestArticles: state => state.newestArticles
 }
 
 // actions
 const actions = {
-  getAllArticles ({ commit }) {
-    getArticlesWorker(commit)
+  initializeStateFromLocalDB ({ commit }) {
+    articlesDb.get(ALL_ARTICLES_DBKEY).then(allArticles => {
+      commit(types.ALL_ARTICLES_LOADED, allArticles)
+    }).catch(err => {
+      console.error(err)
+    })
+    articlesDb.get(NEWEST_ARTICLES_DBKEY).then(newestArticles => {
+      if (!newestArticles || !newestArticles.articleSlugs || (new Date().getTime() - newestArticles.lastUpdate) > CACHE_EXPIRY_MS) {
+        actions.updateNewestArticles({ commit })
+      } else {
+        commit(types.NEWEST_ARTICLES_LOADED, newestArticles)
+      }
+    }).catch(err => {
+      console.error(err)
+    })
+  },
+  updateNewestArticles ({ commit }) {
+    apiWrapper.getLatestArticles().then(response => {
+      if (response.status.code === 200 && response.entity) {
+        commit(types.NEWEST_ARTICLES_RECEIVED, response.entity)
+      }
+    }).catch(err => {
+      // TODO: handle error - Notify user
+      console.error(err)
+    })
   }
 }
 
 // mutations
 const mutations = {
-  [types.INIT_ARTICLES] (state, filters) {
-    state.all = state.all.concat(filters)
+  [types.ALL_ARTICLES_LOADED] (state, allArticles) {
+    state.allArticles = allArticles
   },
+  [types.NEWEST_ARTICLES_LOADED] (state, newestArticles) {
+    state.newestArticles = newestArticles
+  },
+  [types.NEWEST_ARTICLES_RECEIVED] (state, articles) {
+    articles.map(article => {
+      const newAllArticles = { ...state.allArticles }
+      newAllArticles[article.slug] = article
+      state.allArticles = newAllArticles
+    })
+    state.newestArticles = {
+      articleSlugs: articles.reduce((previous, current) => {
+        if (current && current.slug) {
+          previous.push(current.slug)
+        }
+        return previous
+      }, []),
+      lastUpdate: new Date().getTime()
 
-  [types.ADD_TO_CART] (state, { id }) {
-    state.all.find(p => p.id === id).inventory--
+    }
+    articlesDb.set(ALL_ARTICLES_DBKEY, state.allArticles)
+    articlesDb.set(NEWEST_ARTICLES_DBKEY, state.newestArticles)
   }
 }
 

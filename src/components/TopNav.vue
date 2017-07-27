@@ -1,43 +1,23 @@
 <template>
   <div id="top-nav">
     <div class="multilevel-offcanvas off-canvas position-left" id="offCanvasLeft" data-off-canvas>
-      <ul class="vertical menu" data-accordion-menu>
-        <li><a href="#">SERVICES</a>
-          <ul class="menu vertical nested">
-            <li><a href="#">Brand</a></li>
-            <li><a href="#">Web Apps</a></li>
-            <li><a href="#">Mobile Apps</a></li>
-          </ul>
-        </li>
-        <li><a href="#">PRODUCTS</a>
-          <ul class="menu vertical nested">
-            <li><a href="#">Product 1</a></li>
-            <li><a href="#">Product 2</a></li>
-            <li><a href="#">Product 3</a></li>
-          </ul>
-        </li>
-        <li><a href="#">CITIES</a>
-          <ul class="menu vertical nested">
-            <li><a href="#">London</a></li>
-            <li><a href="#">New York</a></li>
-            <li><a href="#">Paris</a></li>
-          </ul>
-        </li>
-      </ul>
       <ul class="vertical menu">
-        <li class="off-canvas-menu-item"><a href="#">Tour</a></li>
+        <li><router-link to="/portfolio">About</router-link></li>
         <li><router-link to="/portfolio">Portfolio</router-link></li>
-        <li><a href="#">Login</a></li>
-        <li><a href="#">Register</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">Support</a></li>
+        <li><router-link to="/portfolio">Magazine</router-link></li>
+        <li><router-link to="/portfolio">Consultancies</router-link></li>
+        <li><router-link to="/portfolio">Visibility NGO</router-link></li>
+        <li><router-link to="/portfolio">Blog</router-link></li>
+        <li><router-link to="/portfolio">Contacts</router-link></li>
       </ul>
-      <ul class="vertical menu">
-        <li><a href="#">Journal</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Terms & Conditions</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Students</a></li>
+      <ul class="vertical menu" data-accordion-menu>
+        <li><a href="#">Language</a>
+          <ul class="menu vertical nested">
+            <li><a href="#0">English</a></li>
+            <li><a href="#0">Italian</a></li>
+            <li><a href="#0">French</a></li>
+          </ul>
+        </li>
       </ul>
       <ul class="menu simple social-links">
         <li><a href="#" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
@@ -70,13 +50,13 @@
         <div class="top-bar show-for-medium" id="responsive-menu">
           <div class="top-bar-center">
             <ul class="dropdown menu" data-dropdown-menu>
-              <li><a href="#0" :class="{'active': subIsActive('/parent')}">About</a></li>
+              <li><router-link to="/about" :class="{'active': subIsActive('/about/')}">About</router-link></li>
               <li><router-link to="/portfolio" :class="{'active': subIsActive('/portfolio')}">Portfolio</router-link></li>
-              <li><a href="#0" :class="{'active': subIsActive('/parent')}">Magazine</a></li>
-              <li><a href="#0" :class="{'active': subIsActive('/parent')}">Consultancies</a></li>
-              <li><a href="#0" :class="{'active': subIsActive('/parent')}">Visibility NGO</a></li>
-              <li><a href="#0" :class="{'active': subIsActive('/parent')}">Blog</a></li>
-              <li><a href="#0" :class="{'active': subIsActive('/parent')}">Constacts</a></li>
+              <li><router-link to="/magazine" :class="{'active': subIsActive('/magazine')}">Magazine</router-link></li>
+              <li><router-link to="/consulenze" :class="{'active': subIsActive('/consulenze')}">Consultancies</router-link></li>
+              <li><router-link to="/visibility-ngo" :class="{'active': subIsActive('/visibility-ngo')}">Visibility NGO</router-link></li>
+              <li><router-link to="/category/blog/" :class="{'active': subIsActive('/category/blog/')}">Blog</router-link></li>
+              <li><router-link to="/contacts/" :class="{'active': subIsActive('/contacts/')}">Contacts</router-link></li>
               <li class="has-submenu">
                 <a href="#0">Language</a>
                 <ul class="submenu menu vertical" data-submenu>

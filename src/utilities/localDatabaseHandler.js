@@ -55,5 +55,5 @@ const getADatabase = databaseName => {
 }
 
 module.exports = {
-  securityDb: getADatabase('ql-security')
+  articlesDb: getADatabase('nawart-articles')
 }
