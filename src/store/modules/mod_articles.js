@@ -47,12 +47,19 @@ const actions = {
 // mutations
 const mutations = {
   [types.ALL_ARTICLES_LOADED] (state, allArticles) {
-    state.allArticles = allArticles
+    if (allArticles) {
+      state.allArticles = allArticles
+    }
   },
   [types.NEWEST_ARTICLES_LOADED] (state, newestArticles) {
-    state.newestArticles = newestArticles
+    if (newestArticles) {
+      state.newestArticles = newestArticles
+    }
   },
   [types.NEWEST_ARTICLES_RECEIVED] (state, articles) {
+    if (!articles) {
+      return
+    }
     articles.map(article => {
       const newAllArticles = { ...state.allArticles }
       newAllArticles[article.slug] = article

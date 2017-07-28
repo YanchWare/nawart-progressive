@@ -28,7 +28,7 @@
   import { getMedia, getCategories } from '../utilities/apiSupport'
   export default {
     name: 'smallArticleExcerpt',
-    props: ['story'],
+    props: ['story', 'categories'],
     data () {
       return {
         mediaUrl: null,
@@ -42,12 +42,14 @@
       }).catch(err => {
         console.error(err)
       })
-      getCategories(this.story.categories).then(categoriesHtml => {
-        this.categoriesHtml = categoriesHtml
-      }).catch(err => {
-        console.error(err)
-      })
+    },
+
+    updated () {
+      if (this.categories) {
+        this.categoriesHtml = getCategories(this.story.categories, this.categories)
+      }
     }
+
   }
 </script>
 

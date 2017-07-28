@@ -11,6 +11,7 @@ import VueHead from 'vue-head'
 import VueRouter from 'vue-router'
 import store from './store'
 import modArticles from './store/modules/mod_articles'
+import modCategories from './store/modules/mod_categories'
 
 Vue.use(VueHead)
 Vue.use(VueRouter)
@@ -36,3 +37,4 @@ new Vue({
 }).$mount('#app')
 
 modArticles.actions.initializeStateFromLocalDB(store)
+modCategories.actions.initializeStateFromLocalDB(store)

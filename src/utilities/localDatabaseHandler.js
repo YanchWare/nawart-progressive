@@ -55,5 +55,6 @@ const getADatabase = databaseName => {
 }
 
 module.exports = {
-  articlesDb: getADatabase('nawart-articles')
+  articlesDb: getADatabase('nawart-articles'),
+  categoriesDb: getADatabase('nawart-categories')
 }

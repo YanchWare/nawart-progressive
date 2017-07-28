@@ -18,20 +18,18 @@ const getMedia = (featuredMedia) => {
   })
 }
 
-const getCategories = (categoryIds) => {
-  return Promise.all(apiWrapper.getCategories(categoryIds)).then(categories => {
-    return categories.map(category => {
-      if (category) {
-        return category.entity.name
-      }
-    }).reduce((previous, current) => {
-      if (current) {
-        return previous + ', ' + current
-      } else {
-        return previous
-      }
-    }, '').substring(1)
-  })
+const getCategories = (categoryIds, categories) => {
+  if (!categoryIds || !categories) {
+    return ''
+  }
+  const ret = categoryIds.reduce((previous, current) => {
+    if (current && categories[current]) {
+      return previous + ', ' + categories[current].name
+    } else {
+      return previous
+    }
+  }, '').substring(1)
+  return ret
 }
 
 module.exports = {
