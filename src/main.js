@@ -4,6 +4,7 @@ import Article from './views/Article'
 import Frontpage from './views/Frontpage'
 import About from './views/About'
 import Portfolio from './views/Portfolio'
+import Magazine from './views/Magazine'
 import Filters from './utilities/vueFilters'
 import Vue from 'vue'
 import VueHead from 'vue-head'
@@ -22,6 +23,7 @@ const router = new VueRouter({
     { path: '/', name: 'frontpage', component: Frontpage },
     { path: '/about', name: 'about', component: About },
     { path: '/portfolio', name: 'portfolio', component: Portfolio },
+    { path: '/magazine', name: 'magazine', component: Magazine },
     { path: '*', name: 'article', component: Article }
   ]
 })

@@ -279,13 +279,9 @@ export default {
   name: 'about',
 
   mounted () {
-    this.collapsible()
   },
 
   methods: {
-    collapsible () {
-      window.$('.collapsible').collapsible()
-    }
   }
 }
 </script>

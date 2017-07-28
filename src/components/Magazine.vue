@@ -11,7 +11,7 @@
             <span>Number One</span>
           </div>
           <div class="card-section">
-            <a class="button secondary expanded" href="#"><i class="fa fa-file-pdf-o"></i>Table of contents</a>
+            <router-link to="/magazine" class="button secondary expanded" href="#"><i class="fa fa-file-pdf-o"></i>Table of contents</router-link>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
             <span>Number Zero</span>
           </div>
           <div class="card-section">
-            <a class="button secondary expanded" href="#"><i class="fa fa-file-pdf-o"></i>Table of contents</a>
+            <router-link to="/magazine" class="button secondary expanded" href="#"><i class="fa fa-file-pdf-o"></i>Table of contents</router-link>
           </div>
         </div>
       </div>
@@ -46,5 +46,4 @@ i.fa, span {
   font-size: 1.5em;
   margin: 10px;
 }
-
 </style>
