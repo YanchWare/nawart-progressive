@@ -2,10 +2,10 @@ import rest from 'rest'
 import mime from 'rest/interceptor/mime'
 
 const client = rest.wrap(mime)
-const categoryEndpoint = 'http://nawartpress.com/wp-json/wp/v2/categories'
-const articleEndpoint = 'http://nawartpress.com/wp-json/wp/v2/posts'
+const categoryEndpoint = '//nawartpress.com/wp-json/wp/v2/categories'
+const articleEndpoint = '//nawartpress.com/wp-json/wp/v2/posts'
 
-const mediaEndpoint = 'http://nawartpress.com/wp-json/wp/v2/media/'
+const mediaEndpoint = '//nawartpress.com/wp-json/wp/v2/media/'
 
 // TODO: Cache in IndexDB
 const getMedia = (mediaId) => {

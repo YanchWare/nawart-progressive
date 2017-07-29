@@ -55,7 +55,7 @@
       or follow us on<br/>
       <a href="https://www.facebook.com/nawartpress" class="boxed-icon fill facebook icon-3x" target="_blank"><i class="fa fa-facebook"></i></a>
       <a href="https://www.flickr.com/photos/130959910@N05/" class="boxed-icon fill flickr icon-3x" target="_blank"><i class="fa fa-flickr"></i></a>
-      <a href="http://www.instagram.com/nawart_press" class="boxed-icon fill instagram icon-3x" target="_blank"><i class="fa fa-instagram"></i></a>
+      <a href="https://www.instagram.com/nawart_press" class="boxed-icon fill instagram icon-3x" target="_blank"><i class="fa fa-instagram"></i></a>
       <a href="https://twitter.com/NawartPress" class="boxed-icon fill twitter icon-3x" target="_blank"><i class="fa fa-twitter"></i></a>
       <a href="https://www.youtube.com/channel/UChK3l3IZALtHHGwb4XAsEhA" class="boxed-icon fill youtube icon-3x" target="_blank"><i class="fa fa-youtube"></i></a>
       <a href="https://soundcloud.com/nawart-press" class="boxed-icon fill soundcloud icon-3x" target="_blank"><i class="fa fa-soundcloud"></i></a>

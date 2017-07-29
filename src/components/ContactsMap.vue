@@ -26,7 +26,7 @@ export default {
         id: 'mapbox.streets'
       }).addTo(this.myMap)
       const nawartIcon = Leaflet.icon({
-        iconUrl: 'http://nawartpress.com/wp-content/uploads/2016/01/pin.png',
+        iconUrl: '//nawartpress.com/wp-content/uploads/2016/01/pin.png',
         iconAnchor: [20, 74]
       })
       Leaflet.marker([34.0209, -6.8416], {icon: nawartIcon}).addTo(this.myMap)

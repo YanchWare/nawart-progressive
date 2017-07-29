@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build": "node build/build.js && cp web.config dist/web.config",
+    "build": "node build/build.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
@@ -62,7 +62,7 @@
     "eslint-plugin-standard": "^2.0.1",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.13.3",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.9.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "function-bind": "^1.0.2",

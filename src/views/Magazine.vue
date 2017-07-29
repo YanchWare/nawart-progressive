@@ -2,8 +2,8 @@
   <div class="row collapse">
     <div class="medium-3 columns">
       <ul class="vertical tabs" data-tabs id="example-tabs">
-        <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true"><img src="http://www.nawartpress.com/wp-content/uploads/2016/01/locandina25x40-600x960.jpg"></a></li>
-        <li class="tabs-title"><a href="#panel2v"><img src="http://www.nawartpress.com/wp-content/uploads/2016/01/copertina-Magazine-PDF-CORRETTO.jpg"></a></li>
+        <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true"><img src="//nawartpress.com/wp-content/uploads/2016/01/locandina25x40-600x960.jpg"></a></li>
+        <li class="tabs-title"><a href="#panel2v"><img src="//nawartpress.com/wp-content/uploads/2016/01/copertina-Magazine-PDF-CORRETTO.jpg"></a></li>
       </ul>
     </div>
     <div class="medium-9 columns">

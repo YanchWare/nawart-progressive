@@ -44,7 +44,7 @@
         Tommaso Zerbini, audio and sound technician
         Ines Della Valle, photographer
         Small Boss, production company
-        <a href="http://www.118libri.com/" target="_blank" rel="noopener">118 Libri</a>
+        <a href="//118libri.com/" target="_blank" rel="noopener">118 Libri</a>
         Marco Cacioppo
       </div>
       <div class="large-6 small-12 columns">
@@ -55,100 +55,100 @@
 
           <div class="row small-up-2 medium-up-3 large-up-4">
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/il_venerdi-di_repubblica_logo.jpg" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/il_venerdi-di_repubblica_logo.jpg" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/vitatrentina.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/vitatrentina.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/unita.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/unita.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/torto.jpg" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/torto.jpg" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/nena.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/nena.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/robMorrione.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/robMorrione.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/smt.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/smt.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/nigrizia.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/nigrizia.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/pagina99.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/pagina99.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/repubblica.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/repubblica.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/regioneTicino.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/regioneTicino.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/raiNews24.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/raiNews24.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/limes.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/limes.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/mee.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/mee.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/lettera22.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/lettera22.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/left.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/left.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/FO.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/FO.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/fattoQuotidiano.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/fattoQuotidiano.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/choisir.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/choisir.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/communityTimes.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/communityTimes.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/ecoDiBergamo.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/ecoDiBergamo.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/cairopost.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/cairopost.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/europa.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/europa.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/emergency.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/emergency.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/caffe.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/caffe.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/bhe.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/bhe.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/azione.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/azione.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/atlantic.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/atlantic.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/artshub.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/artshub.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/09/rai-storia-2.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/09/rai-storia-2.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/aljazeera.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/aljazeera.png" >
             </div>
             <div class="column column-block">
-              <img src="http://www.nawartpress.com/wp-content/uploads/2015/10/area.png" >
+              <img src="//nawartpress.com/wp-content/uploads/2015/10/area.png" >
             </div>
           </div>
 

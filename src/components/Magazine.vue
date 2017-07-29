@@ -5,7 +5,7 @@
       <div class="large-6 small-12 columns">
         <div class="card">
           <div class="card-section">
-            <img src="http://www.nawartpress.com/wp-content/uploads/2016/01/locandina25x40-600x960.jpg">
+            <img src="//www.nawartpress.com/wp-content/uploads/2016/01/locandina25x40-600x960.jpg">
           </div>
           <div class="card-section">
             <span>Number One</span>
@@ -18,7 +18,7 @@
       <div class="large-6 small-12 columns">
         <div class="card">
           <div class="card-section">
-            <img src="http://www.nawartpress.com/wp-content/uploads/2016/01/copertina-Magazine-PDF-CORRETTO.jpg">
+            <img src="//www.nawartpress.com/wp-content/uploads/2016/01/copertina-Magazine-PDF-CORRETTO.jpg">
           </div>
           <div class="card-section">
             <span>Number Zero</span>

@@ -14,7 +14,7 @@
           <h2>{{story.title.rendered}}</h2>
         </div>
         <div class="testata">
-          <img v-if="story.fields.testata_giornalistica" :src="'http://www.nawartpress.com/' + story.fields.testata_giornalistica">
+          <img v-if="story.fields.testata_giornalistica" :src="'//nawartpress.com/' + story.fields.testata_giornalistica">
         </div>
         <div class="excerpt">
           <span v-html="story.excerpt.rendered"></span>
