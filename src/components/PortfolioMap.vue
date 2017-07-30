@@ -124,8 +124,8 @@ h2{
   width: 30vw;
 }
 #portfolio-map{
-  width: 30vw;
-  margin: 0;
+  width: 40vw;
+  margin-left: -80px;
   height: 100vh;
   padding: 0;
   z-index: 1;
