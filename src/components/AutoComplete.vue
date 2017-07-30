@@ -90,7 +90,6 @@ export default {
       }
     },
     setEntries (list) {
-      console.log(list)
       this.entries = list
     },
     moveUp () {

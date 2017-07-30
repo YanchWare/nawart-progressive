@@ -5,7 +5,7 @@
       <div class="row">
         <div class="large-2 columns">
           <AutocompleteVue
-            :list="filters"
+            :list="categories"
             placeholder="Country"
           ></AutocompleteVue>
         </div>
@@ -51,25 +51,15 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
 import AutocompleteVue from './AutoComplete'
 export default {
   name: 'filters',
-  computed: mapGetters({
-    filters: 'allFilters',
-    stories: 'allArticles'
-  }),
+  props: ['categories'],
   components: {
     AutocompleteVue
   },
-  created () {
-    this.$store.dispatch('getAllFilters')
-    this.$store.dispatch('getAllArticles')
-  },
-  watch: {
-    filters (value) {
-      console.log(value)
-    }
+  mounted () {
+
   }
 }
 </script>
@@ -77,5 +67,14 @@ export default {
 <style scoped>
 #filters {
   padding: 10px;
+  background-color: #fff;
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
 }
 </style>

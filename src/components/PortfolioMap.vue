@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div id="portfolio-map-container">
     <div id="controls">
-      <h2>Stories: {{stories.length}}</h2>
+      <h2>Stories: {{countriesLatLang.reduce((previous, current)=>{
+        return previous + (categories[current.catId] ? categories[current.catId].count : 0)}, 0)}}</h2>
     </div>
     <div id="portfolio-map"></div>
   </div>
@@ -9,14 +10,9 @@
 
 <script>
 import Leaflet from 'leaflet'
-import {mapGetters} from 'vuex'
 export default {
   name: 'portfolioMap',
-  computed: mapGetters({
-    stories: 'allArticles'
-  }),
-  components: {
-  },
+  props: ['categories'],
   data: function () {
     return {
       countriesLatLang: [
@@ -48,10 +44,6 @@ export default {
   mounted () {
     this.initMap()
   },
-  watch: {
-    // update map when stories change
-    'stories': 'updateMap'
-  },
   methods: {
     initMap () {
       this.myMap = this.myMap ? this.myMap : Leaflet.map('portfolio-map', { zoomControl: false }).setView([37.7220031, 15.1464744], 11)
@@ -63,22 +55,23 @@ export default {
       this.updateMap()
     },
     updateMap () {
+      if (!this.categories) {
+        return
+      }
+
       let markers = this.countriesLatLang.map((country) => {
-        let markerStories = this.stories.filter(function (story) {
-          return story.categories.indexOf(parseInt(country.catId)) >= 0
-        })
         return {
           id: country.catId,
           name: country.name,
           location: country.location,
-          stories: markerStories,
           icon: {
             iconSize: [25, 25],
             className: 'map-marker',
-            html: markerStories.length
+            html: this.categories[country.catId] ? this.categories[country.catId].count : 0
           }
         }
       })
+
       // Remove existing Markers
       if (this.myMap.markersOnMap && this.myMap.markersOnMap.length > 0) {
         this.myMap.markersOnMap.map((marker) => {
@@ -124,14 +117,15 @@ h2{
  margin: 0;
  padding: 10px;
 }
+
 #controls {
   height: 75px;
   width: 30vw;
 }
 #portfolio-map{
   width: 30vw;
-  height: 100vh;
   margin: 0;
+  height: 100vh;
   padding: 0;
   z-index: 1;
 }

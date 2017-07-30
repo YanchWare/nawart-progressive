@@ -49,14 +49,6 @@ export default {
     allCategories: 'allCategories'
   }),
 
-  data () {
-    return {
-    }
-  },
-
-  created () {
-  },
-
   components: {
     ArticleExcerpt,
     FourExcerpts,

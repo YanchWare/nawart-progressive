@@ -46,6 +46,7 @@ const actions = {
 const mutations = {
   [types.ALL_CATEGORIES_LOADED] (state, allCategories) {
     if (allCategories) {
+      state.allCategories.categoriesById = allCategories.categoriesById
       state.allCategories = allCategories
     }
   },
