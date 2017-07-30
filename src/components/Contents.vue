@@ -22,5 +22,6 @@ export default {
   flex-flow: column wrap;
   text-align: center;
   display: wrap;
+  margin-top: 75px;
 }
 </style>

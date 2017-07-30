@@ -1,7 +1,5 @@
 <template>
-  <div id="filters" >
-    <fieldset class="fieldset">
-      <legend>Search our Portfolio</legend>
+  <div id="filters" class="show-for-large" >
       <div class="row">
         <div class="large-2 columns">
           <AutocompleteVue
@@ -46,7 +44,6 @@
           ></AutocompleteVue>
         </div>
       </div>
-    </fieldset>
   </div>
 </template>
 
@@ -73,8 +70,9 @@ export default {
   width: 100vw;
 }
 
-fieldset {
-  margin: 0;
+.row {
   padding: 0;
+  margin: 0;
 }
+
 </style>

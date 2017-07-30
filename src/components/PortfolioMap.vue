@@ -119,6 +119,7 @@ h2{
 }
 
 #controls {
+  margin-top: 75px;
   height: 75px;
   width: 30vw;
 }
