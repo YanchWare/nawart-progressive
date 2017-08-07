@@ -2,20 +2,20 @@
   <div id="top-nav">
     <div class="multilevel-offcanvas off-canvas position-left" id="offCanvasLeft" data-off-canvas>
       <ul class="vertical menu">
-        <li><router-link to="/portfolio">About</router-link></li>
+        <li><router-link to="/about">{{$t('About')}}</router-link></li>
         <li><router-link to="/portfolio">Portfolio</router-link></li>
-        <li><router-link to="/portfolio">Magazine</router-link></li>
-        <li><router-link to="/portfolio">Consultancies</router-link></li>
-        <li><router-link to="/portfolio">Visibility NGO</router-link></li>
-        <li><router-link to="/portfolio">Blog</router-link></li>
-        <li><router-link to="/portfolio">Contacts</router-link></li>
+        <li><router-link to="/magazine">Magazine</router-link></li>
+        <li><router-link to="/consulenze">{{$t('Consultancies')}}</router-link></li>
+        <li><router-link to="/visibility-ngo">{{$t('Visibility NGO')}}</router-link></li>
+        <li><router-link to="/category/blog">Blog</router-link></li>
+        <li><router-link to="/contacts">{{$t('Contacts')}}</router-link></li>
       </ul>
       <ul class="vertical menu" data-accordion-menu>
-        <li><a href="#">Language</a>
+        <li><a href="#">{{$t('Language')}}</a>
           <ul class="menu vertical nested">
-            <li><a href="#0">English</a></li>
-            <li><a href="#0">Italian</a></li>
-            <li><a href="#0">French</a></li>
+            <li><a @click="changeLanguage('en')">English</a></li>
+            <li><a @click="changeLanguage('it')">Italiano</a></li>
+            <li><a @click="changeLanguage('fr')">Français</a></li>
           </ul>
         </li>
       </ul>
@@ -50,19 +50,19 @@
         <div class="top-bar show-for-medium" id="responsive-menu">
           <div class="top-bar-center">
             <ul class="dropdown menu" data-dropdown-menu>
-              <li><router-link to="/about" :class="{'active': subIsActive('/about/')}">About</router-link></li>
+              <li><router-link to="/about" :class="{'active': subIsActive('/about/')}">{{$t('About')}}</router-link></li>
               <li><router-link to="/portfolio" :class="{'active': subIsActive('/portfolio')}">Portfolio</router-link></li>
               <li><router-link to="/magazine" :class="{'active': subIsActive('/magazine')}">Magazine</router-link></li>
-              <li><router-link to="/consulenze" :class="{'active': subIsActive('/consulenze')}">Consultancies</router-link></li>
-              <li><router-link to="/visibility-ngo" :class="{'active': subIsActive('/visibility-ngo')}">Visibility NGO</router-link></li>
-              <li><router-link to="/category/blog/" :class="{'active': subIsActive('/category/blog/')}">Blog</router-link></li>
-              <li><router-link to="/contacts/" :class="{'active': subIsActive('/contacts/')}">Contacts</router-link></li>
+              <li><router-link to="/consulenze" :class="{'active': subIsActive('/consulenze')}">{{$t('Consultancies')}}</router-link></li>
+              <li><router-link to="/visibility-ngo" :class="{'active': subIsActive('/visibility-ngo')}">{{$t('Visibility NGO')}}</router-link></li>
+              <li><router-link to="/category/blog" :class="{'active': subIsActive('/category/blog/')}">Blog</router-link></li>
+              <li><router-link to="/contacts" :class="{'active': subIsActive('/contacts/')}">{{$t('Contacts')}}</router-link></li>
               <li class="has-submenu">
-                <a href="#0">Language</a>
+                <a href="#0">{{$t('Language')}}</a>
                 <ul class="submenu menu vertical" data-submenu>
-                  <li><a href="#0">English</a></li>
-                  <li><a href="#0">Italian</a></li>
-                  <li><a href="#0">French</a></li>
+                  <li><a @click="changeLanguage('en')">English</a></li>
+                  <li><a @click="changeLanguage('it')">Italiano</a></li>
+                  <li><a @click="changeLanguage('fr')">Français</a></li>
                 </ul>
               </li>
             </ul>
@@ -120,6 +120,9 @@ export default {
       return paths.some(path => {
         return this.$route.path.indexOf(path) === 0 // current path starts with this path string
       })
+    },
+    changeLanguage (languageCode) {
+      this.$i18n.set(languageCode)
     }
   },
 

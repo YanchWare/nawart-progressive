@@ -12,9 +12,17 @@ import VueRouter from 'vue-router'
 import store from './store'
 import modArticles from './store/modules/mod_articles'
 import modCategories from './store/modules/mod_categories'
+import vuexI18n from 'vuex-i18n'
+import {translationsEn, translationsFr, translationsIt} from './internazionalization'
 
 Vue.use(VueHead)
 Vue.use(VueRouter)
+Vue.use(vuexI18n.plugin, store)
+
+Vue.i18n.add('en', translationsEn)
+Vue.i18n.add('fr', translationsFr)
+Vue.i18n.add('it', translationsIt)
+Vue.i18n.set('en')
 
 Filters.initializeFilters()
 

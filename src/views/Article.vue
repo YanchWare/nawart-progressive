@@ -3,9 +3,6 @@
     <div v-if="loading">
         <Loading></Loading>
     </div>
-    <div v-if="error" class="error">
-      <Error></Error>
-    </div>
     <div v-if="post" class="content">
       <h1>{{post.title}}</h1>
       <div v-if="post.imageURL" class="row center-align image-article">
@@ -44,7 +41,6 @@
 <script>
 import Loading from '../components/Loading'
 import { FACEBOOK_APP_ID } from '../utilities/constants'
-import Error from '../components/Error'
 import Showdown from 'showdown'
 
 export default {
