@@ -44,9 +44,16 @@
       })
     },
 
-    updated () {
-      if (this.categories) {
-        this.categoriesHtml = getCategories(this.story.categories, this.categories)
+    watch: {
+      // call again the method if the route changes
+      'categories': 'updated'
+    },
+
+    methods: {
+      updated () {
+        if (this.categories) {
+          this.categoriesHtml = getCategories(this.story.categories, this.categories.categoriesById)
+        }
       }
     }
   }

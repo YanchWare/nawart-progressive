@@ -23,7 +23,7 @@ const getCategories = (categoryIds, categories) => {
     return ''
   }
   const ret = categoryIds.reduce((previous, current) => {
-    if (current && categories[current]) {
+    if (current && categories[current] && current !== 1) {
       return previous + ', ' + categories[current].name
     } else {
       return previous

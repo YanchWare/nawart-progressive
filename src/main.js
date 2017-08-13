@@ -22,7 +22,8 @@ Vue.use(vuexI18n.plugin, store)
 Vue.i18n.add('en', translationsEn)
 Vue.i18n.add('fr', translationsFr)
 Vue.i18n.add('it', translationsIt)
-Vue.i18n.set('en')
+
+Vue.i18n.set('it') // TODO: Base it on stored info and / or browser settings
 
 Filters.initializeFilters()
 
@@ -44,5 +45,5 @@ new Vue({
   store
 }).$mount('#app')
 
-modArticles.actions.initializeStateFromLocalDB(store)
-modCategories.actions.initializeStateFromLocalDB(store)
+modArticles.actions.initializeArticlesFromLocalDB(store, Vue.i18n.locale())
+modCategories.actions.initializeCategoriesFromLocalDB(store, Vue.i18n.locale())

@@ -15,30 +15,30 @@ const getters = {
   allCategories: state => state.allCategories
 }
 
-function getCategoriesWorker (commit, page = 1) {
-  apiWrapper.getAllCategories(page).then(function (response) {
-    commit(types.ALL_CATEGORIES_RECEIVED, response.entity)
+function getCategoriesWorker (commit, languageCode, page = 1) {
+  apiWrapper.getAllCategories(languageCode, page).then(function (response) {
+    commit(types.ALL_CATEGORIES_RECEIVED, {entity: response.entity, languageCode})
     let totalPages = response.headers['X-Wp-Totalpages']
     if (page < totalPages) {
-      getCategoriesWorker(commit, ++page)
+      getCategoriesWorker(commit, languageCode, ++page)
     }
   })
 }
 
 // actions
 const actions = {
-  initializeStateFromLocalDB ({ commit }) {
-    categoriesDb.get(ALL_CATEGORIES_DBKEY).then(allCategories => {
+  initializeCategoriesFromLocalDB ({ commit }, languageCode) {
+    categoriesDb.get(ALL_CATEGORIES_DBKEY + languageCode).then(allCategories => {
       commit(types.ALL_CATEGORIES_LOADED, allCategories)
       if (!allCategories || !allCategories.categoriesById || (new Date().getTime() - allCategories.lastUpdate) > CACHE_EXPIRY_MS) {
-        actions.updateAllCategories({ commit })
+        actions.updateAllCategories({ commit }, languageCode)
       }
     }).catch(err => {
       console.error(err)
     })
   },
-  updateAllCategories ({ commit }) {
-    getCategoriesWorker(commit)
+  updateAllCategories ({ commit }, languageCode) {
+    getCategoriesWorker(commit, languageCode)
   }
 }
 
@@ -50,9 +50,10 @@ const mutations = {
       state.allCategories = allCategories
     }
   },
-  [types.ALL_CATEGORIES_RECEIVED] (state, categories) {
-    console.log(state)
-    if (!categories) {
+  [types.ALL_CATEGORIES_RECEIVED] (state, categoriesReceived) {
+    const categories = categoriesReceived.entity
+    const languageCode = categoriesReceived.languageCode
+    if (!categories || !languageCode) {
       return
     }
     let newCategoriesById = categories.reduce((previous, current) => {
@@ -66,7 +67,7 @@ const mutations = {
       categoriesById: Object.assign(state.allCategories.categoriesById, newCategoriesById),
       lastUpdate: new Date().getTime()
     }
-    categoriesDb.set(ALL_CATEGORIES_DBKEY, state.allCategories)
+    categoriesDb.set(ALL_CATEGORIES_DBKEY + languageCode, state.allCategories)
   }
 }
 

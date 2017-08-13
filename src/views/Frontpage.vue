@@ -3,7 +3,7 @@
     <div v-if="newestArticles && allArticles">
       <div class="row text-center">
         <div class="small-12 columns">
-          <ArticleExcerpt :story="allArticles[newestArticles.articleSlugs[0]]" :categories="allCategories.categoriesById"/>
+          <ArticleExcerpt :story="allArticles[newestArticles.articleSlugs[0]]" :categories="allCategories"/>
         </div>
         <hr/>
       </div>
@@ -13,7 +13,7 @@
             :stories="[allArticles[newestArticles.articleSlugs[1]], 
               allArticles[newestArticles.articleSlugs[2]], 
               allArticles[newestArticles.articleSlugs[3]], 
-              allArticles[newestArticles.articleSlugs[4]]]" :categories="allCategories.categoriesById"/>
+              allArticles[newestArticles.articleSlugs[4]]]" :categories="allCategories"/>
         </div>
         <div class="large-4 small-12 columns">
           <TwitterWidget/>

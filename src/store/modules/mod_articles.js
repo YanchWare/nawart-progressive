@@ -17,25 +17,25 @@ const getters = {
 
 // actions
 const actions = {
-  initializeStateFromLocalDB ({ commit }) {
-    articlesDb.get(ALL_ARTICLES_DBKEY).then(allArticles => {
+  initializeArticlesFromLocalDB ({ commit }, languageCode) {
+    articlesDb.get(ALL_ARTICLES_DBKEY + languageCode).then(allArticles => {
       commit(types.ALL_ARTICLES_LOADED, allArticles)
     }).catch(err => {
       console.error(err)
     })
-    articlesDb.get(NEWEST_ARTICLES_DBKEY).then(newestArticles => {
+    articlesDb.get(NEWEST_ARTICLES_DBKEY + languageCode).then(newestArticles => {
       commit(types.NEWEST_ARTICLES_LOADED, newestArticles)
       if (!newestArticles || !newestArticles.articleSlugs || (new Date().getTime() - newestArticles.lastUpdate) > CACHE_EXPIRY_MS) {
-        actions.updateNewestArticles({ commit })
+        actions.updateNewestArticles({ commit }, languageCode)
       }
     }).catch(err => {
       console.error(err)
     })
   },
-  updateNewestArticles ({ commit }) {
-    apiWrapper.getLatestArticles().then(response => {
+  updateNewestArticles ({ commit }, languageCode) {
+    apiWrapper.getLatestArticles(languageCode).then(response => {
       if (response.status.code === 200 && response.entity) {
-        commit(types.NEWEST_ARTICLES_RECEIVED, response.entity)
+        commit(types.NEWEST_ARTICLES_RECEIVED, {entity: response.entity, languageCode})
       }
     }).catch(err => {
       // TODO: handle error - Notify user
@@ -56,10 +56,13 @@ const mutations = {
       state.newestArticles = newestArticles
     }
   },
-  [types.NEWEST_ARTICLES_RECEIVED] (state, articles) {
-    if (!articles) {
+  [types.NEWEST_ARTICLES_RECEIVED] (state, receivedArticles) {
+    const articles = receivedArticles.entity
+    const languageCode = receivedArticles.languageCode
+    if (!articles || !languageCode) {
       return
     }
+    console.log(articles)
     articles.map(article => {
       const newAllArticles = { ...state.allArticles }
       newAllArticles[article.slug] = article
@@ -75,8 +78,8 @@ const mutations = {
       lastUpdate: new Date().getTime()
 
     }
-    articlesDb.set(ALL_ARTICLES_DBKEY, state.allArticles)
-    articlesDb.set(NEWEST_ARTICLES_DBKEY, state.newestArticles)
+    articlesDb.set(ALL_ARTICLES_DBKEY + languageCode, state.allArticles)
+    articlesDb.set(NEWEST_ARTICLES_DBKEY + languageCode, state.newestArticles)
   }
 }
 

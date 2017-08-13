@@ -97,7 +97,6 @@ export default {
   name: 'topnav',
 
   computed: mapGetters({
-    securityError: 'securityError'
   }),
 
   data () {
@@ -123,6 +122,8 @@ export default {
     },
     changeLanguage (languageCode) {
       this.$i18n.set(languageCode)
+      this.$store.dispatch('initializeArticlesFromLocalDB', languageCode)
+      this.$store.dispatch('initializeCategoriesFromLocalDB', languageCode)
     }
   },
 
