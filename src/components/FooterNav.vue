@@ -4,7 +4,7 @@
       <div class="small-12 large-offset-2 large-8 columns">
         <div id="mc_embed_signup" class="signup-panel">
           <h4>
-            Subscribe to our newsletter
+            {{$t('Subscribe to our newsletter')}}
           </h4>
           <form action="//nawartpress.us10.list-manage.com/subscribe/post?u=65b1811724da713522a93f8c8&id=ac34a9f562" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <div id="mc_embed_signup_scroll">
@@ -17,7 +17,7 @@
                     <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
                   </div>
                   <div class="small-4 columns">
-                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                    <input type="submit" :value="$t('Subscribe')" name="subscribe" id="mc-embedded-subscribe" class="button">
                   </div>
                 </div>
               </div>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="row collapse">
                   <div class="small-12 columns text-centered lower">
-                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                    <input type="submit" :value="$t('Subscribe')" name="subscribe" id="mc-embedded-subscribe" class="button">
                   </div>
                 </div>
               </div>
@@ -52,7 +52,7 @@
     </div>
 
     <p class="text-center">
-      or follow us on<br/>
+      {{$t('or follow us on')}}<br/>
       <a href="https://www.facebook.com/nawartpress" class="boxed-icon fill facebook icon-3x" target="_blank"><i class="fa fa-facebook"></i></a>
       <a href="https://www.flickr.com/photos/130959910@N05/" class="boxed-icon fill flickr icon-3x" target="_blank"><i class="fa fa-flickr"></i></a>
       <a href="https://www.instagram.com/nawart_press" class="boxed-icon fill instagram icon-3x" target="_blank"><i class="fa fa-instagram"></i></a>
