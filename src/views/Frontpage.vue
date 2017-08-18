@@ -62,7 +62,4 @@ export default {
 </script>
 
 <style scoped>
-  .loading {
-    margin-top: 70vh;
-  }
 </style>

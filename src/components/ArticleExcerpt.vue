@@ -11,7 +11,7 @@
           <span class="datetime">{{ new Date(story.date) | ISODate}}</span>
         </div>
         <div class="article-title">
-          <h2>{{story.title.rendered}}</h2>
+          <h2><router-link :to="'/' + story.slug">{{story.title.rendered}}</router-link></h2>
         </div>
         <div class="testata">
           <img v-if="story.fields.testata_giornalistica" :src="'//nawartpress.com/' + story.fields.testata_giornalistica">
@@ -44,6 +44,10 @@
       })
     },
 
+    updated () {
+      this.updated()
+    },
+
     watch: {
       // call again the method if the route changes
       'categories': 'updated'
@@ -69,4 +73,9 @@
 .testata img {
   max-height: 50px;
 }
+
+.categories {
+  text-transform: uppercase;
+}
+
 </style>

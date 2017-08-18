@@ -13,6 +13,7 @@
 </template>
 
 <style scoped>
+
 @keyframes loading {
   0% {
     transform: rotate(0deg);
@@ -35,6 +36,7 @@ body {
 }
 
 .loading {
+  margin-top: 70vh;
   background-color: transparent;
   border-radius: 50%;
   margin: 5px auto;

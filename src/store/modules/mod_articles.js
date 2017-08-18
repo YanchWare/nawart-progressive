@@ -62,7 +62,6 @@ const mutations = {
     if (!articles || !languageCode) {
       return
     }
-    console.log(articles)
     articles.map(article => {
       const newAllArticles = { ...state.allArticles }
       newAllArticles[article.slug] = article
