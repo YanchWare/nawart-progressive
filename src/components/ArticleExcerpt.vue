@@ -4,7 +4,7 @@
       <div class="img large-8 small-12 columns">
         <img :src="mediaUrl"/>
       </div>
-      <div class="large-4 small-12 columns">
+      <div v-if="story" class="large-4 small-12 columns">
         <div class="article-information">
           <span class="categories" v-html="categoriesHtml"></span>
           -
@@ -20,12 +20,15 @@
           <span v-html="story.excerpt.rendered"></span>
         </div>
       </div>
+      <div v-else class="large-4 small-12 columns"><Loading/</div>
     </div>
   </div>
 </template>
 
 <script>
   import { getMedia, getCategories } from '../utilities/apiSupport'
+  import Loading from '../components/Loading'
+  
   export default {
     name: 'articleExcerpt',
     props: ['story', 'categories'],
@@ -36,12 +39,18 @@
       }
     },
 
+    components: {
+      Loading
+    },
+
     mounted () {
-      getMedia(this.story.featured_media).then(mediaUrl => {
-        this.mediaUrl = mediaUrl
-      }).catch(err => {
-        console.error(err)
-      })
+      if (this.story) {
+        getMedia(this.story.featured_media).then(mediaUrl => {
+          this.mediaUrl = mediaUrl
+        }).catch(err => {
+          console.error(err)
+        })
+      }
     },
 
     updated () {

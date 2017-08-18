@@ -5,6 +5,7 @@ const client = rest.wrap(mime)
 const baseEndpoint = '//nawartpress.com/'
 const categoryEndpoint = 'wp-json/wp/v2/categories'
 const articleEndpoint = 'wp-json/wp/v2/posts'
+const pageEndpoint = 'wp-json/wp/v2/pages'
 const mediaEndpoint = 'wp-json/wp/v2/media/'
 
 // TODO: Cache in IndexDB
@@ -35,8 +36,16 @@ const getLatestArticles = (languageCode, allArticles) => {
   })
 }
 
+const getPage = (pageSlug, languageCode) => {
+  return client({
+    path: baseEndpoint + (languageCode === 'en' ? '' : languageCode + '/') + pageEndpoint + '?slug=' + pageSlug,
+    method: 'GET'
+  })
+}
+
 module.exports = {
   getMedia,
   getLatestArticles,
-  getAllCategories
+  getAllCategories,
+  getPage
 }
