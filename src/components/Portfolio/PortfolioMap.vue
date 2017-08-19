@@ -1,7 +1,7 @@
 <template>
   <div id="portfolio-map-container">
     <div id="controls">
-      <h2 id="stories">Stories: {{countriesLatLang.reduce((previous, current)=>{
+      <h2 id="stories">{{$t('Stories')}}: {{countriesLatLang.reduce((previous, current)=>{
         return previous + (categories[current.catId] ? categories[current.catId].count : 0)}, 0)}}</h2>
         <ScrollDown></ScrollDown>
     </div>

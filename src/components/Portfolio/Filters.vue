@@ -1,23 +1,23 @@
 <template>
   <div id="filters">
     <div class="menu">
-      <h2>Countries</h2>
+      <h2>{{$t('Countries')}}</h2>
       <FilterToggle v-for="filter in categories" :filter="filter"></FilterToggle>
     </div>
     <div class="menu">
-      <h2>Media</h2>
+      <h2>{{$t('Media')}}</h2>
     </div>
     <div class="menu">
-      <h2>Projects</h2>
+      <h2>{{$t('Projects')}}</h2>
     </div>
     <div class="menu">
-      <h2>Multimedia</h2>
+      <h2>{{$t('Multimedia')}}</h2>
     </div>
     <div class="menu">
-      <h2>Years</h2>
+      <h2>{{$t('Years')}}</h2>
     </div>
     <div class="menu">
-      <h2>Authors</h2>
+      <h2>{{$t('Authors')}}</h2>
     </div>
   </div>
 </template>
