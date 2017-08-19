@@ -26,16 +26,16 @@ const actions = {
     articlesDb.get(NEWEST_ARTICLES_DBKEY + languageCode).then(newestArticles => {
       commit(types.NEWEST_ARTICLES_LOADED, newestArticles)
       if (!newestArticles || !newestArticles.articleSlugs || (new Date().getTime() - newestArticles.lastUpdate) > CACHE_EXPIRY_MS) {
-        actions.updateNewestArticles({ commit }, {languageCode, startFromClean: !newestArticles})
+        actions.fetchArticles({ commit }, {languageCode, startFromClean: !newestArticles, type: types.NEWEST_ARTICLES_RECEIVED})
       }
     }).catch(err => {
       console.error(err)
     })
   },
-  updateNewestArticles ({ commit }, {languageCode, startFromClean}) {
-    apiWrapper.getLatestArticles(languageCode).then(response => {
+  fetchArticles ({ state, commit }, {languageCode, startFromClean, type}) {
+    apiWrapper.getLatestArticles(languageCode, (startFromClean ? null : state.allArticles)).then(response => {
       if (response.status.code === 200 && response.entity) {
-        commit(types.NEWEST_ARTICLES_RECEIVED, {entity: response.entity, languageCode, startFromClean})
+        commit(type || types.NEW_ARTICLES_RECEIVED, {entity: response.entity, languageCode, startFromClean})
       }
     }).catch(err => {
       // TODO: handle error - Notify user
@@ -113,6 +113,35 @@ const mutations = {
     }
     articlesDb.set(ALL_ARTICLES_DBKEY + languageCode, state.allArticles)
     articlesDb.set(NEWEST_ARTICLES_DBKEY + languageCode, state.newestArticles)
+  },
+  [types.NEW_ARTICLES_RECEIVED] (state, receivedArticles) {
+    if (!receivedArticles) {
+      return
+    }
+    const articles = receivedArticles.entity
+    const languageCode = receivedArticles.languageCode
+    const startFromClean = receivedArticles.startFromClean
+    if (!articles || !languageCode) {
+      return
+    }
+    let newArticles = null
+    if (startFromClean) {
+      newArticles = articles.reduce((previous, current) => {
+        previous[current.slug] = current
+        return previous
+      }, {})
+    } else {
+      newArticles = articles.reduce((previous, current) => {
+        previous[current.slug] = current
+        return previous
+      }, state.allArticles || {})
+    }
+
+    state.allArticles = {
+      ...newArticles
+    }
+
+    articlesDb.set(ALL_ARTICLES_DBKEY + languageCode, state.allArticles)
   }
 }
 

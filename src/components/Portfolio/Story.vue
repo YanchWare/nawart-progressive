@@ -19,7 +19,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.story)
     getMedia(this.story.featured_media).then(mediaUrl => {
       this.mediaUrl = mediaUrl
     }).catch(err => {
@@ -33,13 +32,9 @@ export default {
 .story{
   width: 400px;
   display: inline-block;
+  padding: 50px 50px 0px 50px;
 }
 .story img{
   max-width: 300px; 
-}
-a{
-  color: #ff7979;
-  text-decoration: none;
-  padding: 5px;
 }
 </style>

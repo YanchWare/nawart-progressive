@@ -2,7 +2,7 @@
   <div id="portfolio-map-container">
     <div id="controls">
       <h2 id="stories">{{$t('Stories')}}: {{countriesLatLang.reduce((previous, current)=>{
-        return previous + (categories[current.catId] ? categories[current.catId].count : 0)}, 0)}}</h2>
+        return previous + (categories.categoriesById[current.catId] ? categories.categoriesById[current.catId].count : 0)}, 0)}}</h2>
         <ScrollDown></ScrollDown>
     </div>
     <div id="portfolio-map"></div>
@@ -74,7 +74,7 @@ export default {
           icon: {
             iconSize: [25, 25],
             className: 'map-marker',
-            html: this.categories[country.catId] ? this.categories[country.catId].count : 0
+            html: this.categories.categoriesById[country.catId] ? this.categories.categoriesById[country.catId].count : 0
           }
         }
       })

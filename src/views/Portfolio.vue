@@ -1,26 +1,31 @@
 <template>
   <div id="app">
-    <div class="row">
+    <div class="row hide-for-medium">
+      <h1>{{$t('Portfolio')}}</h1>      
+    </div>
+    <div class="row hide-for-small-only">
       <div class="large-8 small-12 columns">
-        <PortfolioMap :categories="allCategories.categoriesById"></PortfolioMap>
+        <PortfolioMap :categories="allCategories"></PortfolioMap>
       </div>
       <div class="large-4 columns">
-        <Filters :categories="allCategories.categoriesById"></Filters>
+        <Filters :categories="allCategories"></Filters>
       </div>
     </div>
+    <hr/>
     <div class="row">
       <div class="small-12 columns">
-        <Contents :stories="allArticles"></Contents>
+        <Contents :articles="allArticles"></Contents>
+        <Loading v-if="loading"/>
       </div>
     </div>
   </div>
 </template>
 
-
 <script>
 import PortfolioMap from '../components/Portfolio/PortfolioMap'
 import Filters from '../components/Portfolio/Filters'
 import Contents from '../components/Portfolio/Contents'
+import Loading from '../components/Loading'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -28,12 +33,40 @@ export default {
   components: {
     PortfolioMap,
     Filters,
-    Contents
+    Contents,
+    Loading
   },
   computed: mapGetters({
     allArticles: 'allArticles',
     allCategories: 'allCategories'
-  })
+  }),
+  data () {
+    return {
+      loading: false,
+      olderNumberOfArticles: 0
+    }
+  },
+  mounted () {
+    const options = {
+      onBottomIn: () => {
+        this.fetchMoreArticles()
+      }
+    }
+    window.$('#footer').scrollfire(options)
+  },
+  updated () {
+    if (this.loading && this.allArticles && Object.keys(this.allArticles).length > this.olderNumberOfArticles) {
+      this.loading = false
+    }
+  },
+  methods: {
+    fetchMoreArticles () {
+      console.log('fetching more articles...')
+      this.loading = true
+      this.olderNumberOfArticles = this.allArticles ? Object.keys(this.allArticles).length : 0
+      this.$store.dispatch('fetchArticles', {languageCode: this.$i18n.locale(), startFromClean: false})
+    }
+  }
 }
 </script>
 

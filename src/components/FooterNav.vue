@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="footer">
     <div class="row full-width-row text-center">
       <div class="small-12 large-offset-2 large-8 columns">
         <div id="mc_embed_signup" class="signup-panel">

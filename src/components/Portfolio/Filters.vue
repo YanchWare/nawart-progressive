@@ -2,7 +2,7 @@
   <div id="filters">
     <div class="menu">
       <h2>{{$t('Countries')}}</h2>
-      <FilterToggle v-for="filter in categories" :filter="filter"></FilterToggle>
+      <FilterToggle v-for="filter in categories.categoriesById" :filter="filter"></FilterToggle>
     </div>
     <div class="menu">
       <h2>{{$t('Media')}}</h2>

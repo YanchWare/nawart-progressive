@@ -25,13 +25,13 @@ const getAllCategories = (languageCode, page) => {
 
 const getLatestArticles = (languageCode, allArticles) => {
   const articlesIds = allArticles ? Object.keys(allArticles).reduce((previous, current) => {
-    if (current && current.id) {
-      previous.push(current.id)
+    if (current && allArticles[current].id) {
+      previous.push(allArticles[current].id)
     }
     return previous
-  }, []) : {}
+  }, []) : []
   return client({
-    path: baseEndpoint + (languageCode === 'en' ? '' : languageCode + '/') + articleEndpoint + (articlesIds.count > 0 ? '?exclude=' + articlesIds.toString().replace(/\[\]/g, '') : ''),
+    path: baseEndpoint + (languageCode === 'en' ? '' : languageCode + '/') + articleEndpoint + (articlesIds.length > 0 ? '?exclude=' + articlesIds.toString().replace(/\[\]/g, '') : ''),
     method: 'GET'
   })
 }

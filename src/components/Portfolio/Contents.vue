@@ -1,19 +1,20 @@
 <template>
   <div id="contents">
-    <Story v-for="story in stories" :story="story"></Story>
-  </div>  
+    <Story v-for="story in articles" :story="story" :key="story.id"></Story>
+  </div>
 </template>
 
 <script>
 import Story from './Story'
+
 export default {
   name: 'contents',
-  props: ['stories'],
+  props: ['articles'],
+
   components: {
     Story
-  },
-  mounted () {
   }
+
 }
 </script>
 
