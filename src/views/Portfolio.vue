@@ -1,24 +1,26 @@
 <template>
-  <div id="portfolio" class="wrapper cf">
-    <div class="text-center hide-for-medium">
-      <h2>Portfolio</h2>
-    </div>
-    <Filters :categories="allCategories.categoriesById"/>
+  <div id="app">
     <div class="row">
-      <div class="large-8 small-12 columns content">
-        <Contents :stories="allArticles"/>
+      <div class="large-8 small-12 columns">
+        <PortfolioMap :categories="allCategories.categoriesById"></PortfolioMap>
       </div>
-      <div class="large-4 columns show-for-large sidebar">
-        <PortfolioMap :categories="allCategories.categoriesById"/>
+      <div class="large-4 columns">
+        <Filters :categories="allCategories.categoriesById"></Filters>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <Contents :stories="allArticles"></Contents>
       </div>
     </div>
   </div>
 </template>
 
+
 <script>
-import PortfolioMap from '../components/PortfolioMap'
-import Filters from '../components/Filters'
-import Contents from '../components/Contents'
+import PortfolioMap from '../components/Portfolio/PortfolioMap'
+import Filters from '../components/Portfolio/Filters'
+import Contents from '../components/Portfolio/Contents'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -35,7 +37,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
   box-sizing: border-box;
@@ -76,11 +78,21 @@ html {
   float: left;
 }
 
-
 /* The sticky */
 .sidebar {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
+
+.row, columns{
+  margin: 0;
+  padding: 0;
+}
+
+.column, .columns {
+    padding-right: 0;
+    padding-left: 0;
+}
+
 </style>

@@ -1,8 +1,9 @@
 <template>
   <div id="portfolio-map-container">
     <div id="controls">
-      <h2>Stories: {{countriesLatLang.reduce((previous, current)=>{
+      <h2 id="stories">Stories: {{countriesLatLang.reduce((previous, current)=>{
         return previous + (categories[current.catId] ? categories[current.catId].count : 0)}, 0)}}</h2>
+        <ScrollDown></ScrollDown>
     </div>
     <div id="portfolio-map"></div>
   </div>
@@ -10,9 +11,13 @@
 
 <script>
 import Leaflet from 'leaflet'
+import ScrollDown from './ScrollDown'
 export default {
   name: 'portfolioMap',
   props: ['categories'],
+  components: {
+    ScrollDown
+  },
   data: function () {
     return {
       countriesLatLang: [
@@ -114,21 +119,21 @@ export default {
 </script>
 
 <style>
-h2{
+h2#stories{
  text-align: center;
  margin: 0;
  padding: 10px;
+ width: 100vw;
+ height: 40px;
 }
 
 #controls {
-  margin-top: 75px;
   height: 75px;
   width: 30vw;
 }
 #portfolio-map{
-  width: 40vw;
-  margin-left: -80px;
-  height: 100vh;
+  width: 70vw;
+  height: 70vh;
   padding: 0;
   z-index: 1;
 }

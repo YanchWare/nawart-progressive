@@ -1,10 +1,10 @@
 <template>
   <div id="top-excerpt">
-    <div class="row align-center">
+    <div v-if="story && story.type !== 'page'" class="row align-center" >
       <div class="img large-8 small-12 columns">
         <img :src="mediaUrl"/>
       </div>
-      <div v-if="story" class="large-4 small-12 columns">
+      <div class="large-4 small-12 columns">
         <div class="article-information">
           <span class="categories" v-html="categoriesHtml"></span>
           -
@@ -20,8 +20,8 @@
           <span v-html="story.excerpt.rendered"></span>
         </div>
       </div>
-      <div v-else class="large-4 small-12 columns"><Loading/</div>
     </div>
+    <div v-else class="row align-center"><Loading/</div>
   </div>
 </template>
 

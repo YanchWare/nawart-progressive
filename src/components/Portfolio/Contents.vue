@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Story from '../components/Story'
+import Story from './Story'
 export default {
   name: 'contents',
   props: ['stories'],
@@ -18,10 +18,14 @@ export default {
 </script>
 
 <style scoped>
+
 #contents{
-  flex-flow: column wrap;
   text-align: center;
-  display: wrap;
-  margin-top: 75px;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
+  margin: 20px 0;
+  z-index: 2;
 }
 </style>

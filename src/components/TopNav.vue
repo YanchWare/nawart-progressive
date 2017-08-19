@@ -33,7 +33,7 @@
           <ul class="menu">
             <li>
               <button class="offcanvas-trigger hide-for-medium" type="button">
-                <span class="offcanvas-trigger-text hide-for-small-only"></span>
+                <span class="offcanvas-trigger-text"></span>
                 <div class="hamburger" @click="closeOffCanvas">
                   <span class="line"></span>
                   <span class="line"></span>
@@ -164,7 +164,7 @@ hr {
   top: 0;
   width: 100vw;
   background-color: #fff;
-  z-index: 10;
+  z-index: 100;
 }
 
 .nav-bar {
