@@ -131,12 +131,21 @@ h2#stories{
   height: 75px;
   width: 30vw;
 }
+
 #portfolio-map{
   width: 70vw;
   height: 70vh;
   padding: 0;
   z-index: 1;
 }
+
+@media screen and (max-width: 63.9375em){
+  #portfolio-map{
+    width: 100vw;
+    height: 50vh;
+  }
+}
+
 /* Markers */
 .map-marker{
   border-radius: 50%;

@@ -3,11 +3,11 @@
     <div class="row hide-for-medium">
       <h1>{{$t('Portfolio')}}</h1>      
     </div>
-    <div class="row hide-for-small-only">
+    <div class="row">
       <div class="large-8 small-12 columns">
         <PortfolioMap :categories="allCategories"></PortfolioMap>
       </div>
-      <div class="large-4 columns">
+      <div class="large-4 small-12 columns hide-for-medium-only hide-for-small-only">
         <Filters :categories="allCategories"></Filters>
       </div>
     </div>

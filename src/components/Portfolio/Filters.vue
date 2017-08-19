@@ -38,6 +38,7 @@ export default {
 
 
 <style scoped>
+
 #filters{
     text-align: center;
     background-color: transparent;
