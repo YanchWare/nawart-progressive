@@ -9,7 +9,12 @@
 
 <script>
 import {mapActions} from 'vuex'
-
+import { FILTER_COUNTRY_TYPE,
+  FILTER_MEDIA_TYPE,
+  FILTER_PROJECT_TYPE,
+  FILTER_MULTIMEDIA_TYPE,
+  FILTER_YEAR_TYPE,
+  FILTER_AUTHOR_TYPE } from '../../utilities/constants'
 export default {
   name: 'filter-toggle',
   props: ['filter', 'type', 'currentActiveFilters'],
@@ -21,13 +26,61 @@ export default {
   methods: {
     ...mapActions([
       'activateCountryFilter',
-      'deactivateCountryFilter'
+      'deactivateCountryFilter',
+      'activateMediaFilter',
+      'deactivateMediaFilter',
+      'activateProjectFilter',
+      'deactivateProjectFilter',
+      'activateMultimediaFilter',
+      'deactivateMultimediaFilter',
+      'activateYearFilter',
+      'deactivateYearFilter',
+      'activateAuthorFilter',
+      'deactivateAuthorFilter'
     ]),
     changeFilterState () {
       if (this.filterChecked) {
-        this.activateCountryFilter(this.filter.id)
+        switch (this.type) {
+          case FILTER_COUNTRY_TYPE:
+            this.activateCountryFilter(this.filter.id)
+            break
+          case FILTER_MEDIA_TYPE:
+            this.activateMediaFilter(this.filter.id)
+            break
+          case FILTER_PROJECT_TYPE:
+            this.activateProjectFilter(this.filter.id)
+            break
+          case FILTER_MULTIMEDIA_TYPE:
+            this.activateMultimediaFilter(this.filter.id)
+            break
+          case FILTER_YEAR_TYPE:
+            this.activateYearFilter(this.filter.id)
+            break
+          case FILTER_AUTHOR_TYPE:
+            this.activateAuthorFilter(this.filter.id)
+            break
+        }
       } else {
-        this.deactivateCountryFilter(this.filter.id)
+        switch (this.type) {
+          case FILTER_COUNTRY_TYPE:
+            this.deactivateCountryFilter(this.filter.id)
+            break
+          case FILTER_MEDIA_TYPE:
+            this.deactivateMediaFilter(this.filter.id)
+            break
+          case FILTER_PROJECT_TYPE:
+            this.deactivateProjectFilter(this.filter.id)
+            break
+          case FILTER_MULTIMEDIA_TYPE:
+            this.deactivateMultimediaFilter(this.filter.id)
+            break
+          case FILTER_YEAR_TYPE:
+            this.deactivateYearFilter(this.filter.id)
+            break
+          case FILTER_AUTHOR_TYPE:
+            this.deactivateAuthorFilter(this.filter.id)
+            break
+        }
       }
     }
   }
