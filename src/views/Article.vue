@@ -56,6 +56,7 @@ export default {
         const article = this.allArticles[this.$route.params.articleSlug]
         if (article) {
           this.article = article
+          // TODO check last update and if too old request an update from backend
           if (this.allCategories) {
             this.categoriesHtml = getCategories(this.article.categories, this.allCategories.categoriesById)
           }

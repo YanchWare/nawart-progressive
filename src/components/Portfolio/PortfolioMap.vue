@@ -1,7 +1,7 @@
 <template>
   <div id="portfolio-map-container">
     <div id="controls">
-      <h2 id="stories">{{$t('Stories')}}: {{countriesLatLang.reduce((previous, current)=>{
+      <h2 id="stories">{{$t('Stories')}}: {{currentVisibleCountries.reduce((previous, current)=>{
         return previous + (categories.categoriesById[current.catId] ? categories.categoriesById[current.catId].count : 0)}, 0)}}</h2>
         <ScrollDown></ScrollDown>
     </div>
@@ -12,13 +12,14 @@
 <script>
 import Leaflet from 'leaflet'
 import ScrollDown from './ScrollDown'
+
 export default {
   name: 'portfolioMap',
-  props: ['categories'],
+  props: ['categories', 'currentFilters'],
   components: {
     ScrollDown
   },
-  data: function () {
+  data () {
     return {
       countriesLatLang: [
         { catId: '654', location: [41, 20], name: 'Albania' },
@@ -41,6 +42,17 @@ export default {
         { catId: '657', location: [39, 35], name: 'Turkey' },
         { catId: '692', location: [15.5, 47.5], name: 'Yemen' }
       ]
+    }
+  },
+  computed: {
+    currentVisibleCountries () {
+      if (this.currentFilters && this.currentFilters.countries.length > 0) {
+        return this.countriesLatLang.filter((value) => {
+          return this.currentFilters.countries.indexOf(parseInt(value.catId)) > -1
+        })
+      } else {
+        return this.countriesLatLang
+      }
     }
   },
   updated () {
@@ -66,7 +78,9 @@ export default {
         return
       }
 
-      let markers = this.countriesLatLang.map((country) => {
+      window.$('.showbox').detach()
+
+      let markers = this.currentVisibleCountries.map((country) => {
         return {
           id: country.catId,
           name: country.name,

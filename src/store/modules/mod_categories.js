@@ -7,15 +7,24 @@ import { ALL_CATEGORIES_DBKEY, CACHE_EXPIRY_MS } from '../../utilities/constants
 const state = {
   allCategories: {
     categoriesById: []
+  },
+  portfolioFilters: {
+    countries: [],
+    medias: [],
+    projects: [],
+    multimedia: [],
+    years: [],
+    authors: []
   }
 }
 
 // getters
 const getters = {
-  allCategories: state => state.allCategories
+  allCategories: state => state.allCategories,
+  portfolioFilters: state => state.portfolioFilters
 }
 
-function getCategoriesWorker (commit, languageCode, page = 1) {
+const getCategoriesWorker = (commit, languageCode, page = 1) => {
   apiWrapper.getAllCategories(languageCode, page).then(function (response) {
     commit(types.ALL_CATEGORIES_RECEIVED, {entity: response.entity, languageCode})
     let totalPages = response.headers['X-Wp-Totalpages']
@@ -37,9 +46,19 @@ const actions = {
       console.error(err)
     })
   },
+
   updateAllCategories ({ commit }, languageCode) {
     getCategoriesWorker(commit, languageCode)
+  },
+
+  activateCountryFilter ({ commit }, countryCategoryId) {
+    commit(types.ACTIVATE_COUNTRY_FILTER, countryCategoryId)
+  },
+
+  deactivateCountryFilter ({ commit }, countryCategoryId) {
+    commit(types.DEACTIVATE_COUNTRY_FILTER, countryCategoryId)
   }
+
 }
 
 // mutations
@@ -68,6 +87,16 @@ const mutations = {
       lastUpdate: new Date().getTime()
     }
     categoriesDb.set(ALL_CATEGORIES_DBKEY + languageCode, state.allCategories)
+  },
+  [types.ACTIVATE_COUNTRY_FILTER] (state, countryCategoryId) {
+    state.portfolioFilters.countries.push(countryCategoryId)
+  },
+  [types.DEACTIVATE_COUNTRY_FILTER] (state, countryCategoryId) {
+    for (let i = state.portfolioFilters.countries.length - 1; i >= 0; i--) {
+      if (state.portfolioFilters.countries[i] === countryCategoryId) {
+        state.portfolioFilters.countries.splice(i, 1)
+      }
+    }
   }
 }
 

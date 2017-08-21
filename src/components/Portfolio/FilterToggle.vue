@@ -1,7 +1,7 @@
 <template>
   <div v-if="filter && filter.name" style="display: inline-block;">
     <div class="switch">
-      <input :id="filter.name.toLowerCase().replace(' ','-')" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
+      <input @click="changeFilterState" v-model="filterChecked" :id="filter.name.toLowerCase().replace(' ','-')" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
       <label :for="filter.name.toLowerCase().replace(' ','-')" :data-on="filter.name" :data-off="filter.name"></label>
     </div>
   </div>
@@ -12,10 +12,25 @@ import {mapActions} from 'vuex'
 
 export default {
   name: 'filter-toggle',
-  props: ['filter'],
-  methods: mapActions([
-    'activateFilter'
-  ])
+  props: ['filter', 'type', 'currentActiveFilters'],
+  data () {
+    return {
+      filterChecked: this.currentActiveFilters ? this.currentActiveFilters.indexOf(this.filter.id) > -1 : false
+    }
+  },
+  methods: {
+    ...mapActions([
+      'activateCountryFilter',
+      'deactivateCountryFilter'
+    ]),
+    changeFilterState () {
+      if (this.filterChecked) {
+        this.activateCountryFilter(this.filter.id)
+      } else {
+        this.deactivateCountryFilter(this.filter.id)
+      }
+    }
+  }
 }
 </script>
 

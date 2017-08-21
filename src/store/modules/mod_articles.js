@@ -35,6 +35,7 @@ const actions = {
   fetchArticles ({ state, commit }, {languageCode, startFromClean, type}) {
     apiWrapper.getLatestArticles(languageCode, (startFromClean ? null : state.allArticles)).then(response => {
       if (response.status.code === 200 && response.entity) {
+        // TODO: As in categories understand when we should stop fetching articles
         commit(type || types.NEW_ARTICLES_RECEIVED, {entity: response.entity, languageCode, startFromClean})
       }
     }).catch(err => {
@@ -42,6 +43,7 @@ const actions = {
       console.error(err)
     })
   },
+  // TODO: Fetch a single article if it has not been updated in a long time. Remove it if it respond with a 404 error.
   fetchPage ({ commit }, {pageSlug, languageCode}) {
     apiWrapper.getPage(pageSlug, languageCode).then(response => {
       if (response.status.code === 200 && response.entity) {

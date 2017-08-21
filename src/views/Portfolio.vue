@@ -5,16 +5,16 @@
     </div>
     <div class="row">
       <div class="large-8 small-12 columns">
-        <PortfolioMap :categories="allCategories"></PortfolioMap>
+        <PortfolioMap :categories="allCategories" :currentFilters="portfolioFilters"></PortfolioMap>
       </div>
       <div class="large-4 small-12 columns hide-for-medium-only hide-for-small-only">
-        <Filters :categories="allCategories"></Filters>
+        <Filters :categories="allCategories" :currentFilters="portfolioFilters"></Filters>
       </div>
     </div>
     <hr/>
     <div class="row">
       <div class="small-12 columns">
-        <Contents :articles="allArticles"></Contents>
+        <Contents :articles="allArticles" :currentFilters="portfolioFilters"></Contents>
         <Loading v-if="loading"/>
       </div>
     </div>
@@ -38,7 +38,8 @@ export default {
   },
   computed: mapGetters({
     allArticles: 'allArticles',
-    allCategories: 'allCategories'
+    allCategories: 'allCategories',
+    portfolioFilters: 'portfolioFilters'
   }),
   data () {
     return {

@@ -14,6 +14,9 @@ import modArticles from './store/modules/mod_articles'
 import modCategories from './store/modules/mod_categories'
 import vuexI18n from 'vuex-i18n'
 import {translationsEn, translationsFr, translationsIt} from './internazionalization'
+import activateAllPolyfills from './utilities/polyfills'
+
+activateAllPolyfills()
 
 Vue.use(VueHead)
 Vue.use(VueRouter)

@@ -1,14 +1,15 @@
 <template>
   <div id="filters">
-    <div class="menu">
+    <div v-if="countryCategoriesAsFilters && countryCategoriesAsFilters[0]" class="menu">
       <h2>{{$t('Countries')}}</h2>
-      <FilterToggle v-for="filter in categories.categoriesById" :filter="filter"></FilterToggle>
+      <FilterToggle v-for="country in countryCategoriesAsFilters" :filter="country" :key="country.id" :currentActiveFilters="currentFilters.countries"></FilterToggle>
     </div>
     <div class="menu">
       <h2>{{$t('Media')}}</h2>
     </div>
-    <div class="menu">
+    <div v-if="projectCategoriesAsFilters && projectCategoriesAsFilters[0]" class="menu">
       <h2>{{$t('Projects')}}</h2>
+      <FilterToggle v-for="project in projectCategoriesAsFilters" :filter="project" :key="project.id">{{project}}</FilterToggle>
     </div>
     <div class="menu">
       <h2>{{$t('Multimedia')}}</h2>
@@ -24,14 +25,38 @@
 
 <script>
 import FilterToggle from './FilterToggle'
+
 export default {
   name: 'filters',
-  props: ['categories'],
+  props: ['categories', 'currentFilters'],
   components: {
     FilterToggle
   },
-  mounted () {
-
+  data () {
+    return {
+      legalCountryFiltersCategoriesIds: [654, 867, 659, 687, 15, 959, 689, 656, 898, 17, 16, 658, 685, 691, 660, 690, 688, 657, 692],
+      legalProjectFiltersCategoriesIds: [661, 908]
+    }
+  },
+  computed: {
+    countryCategoriesAsFilters () {
+      return this.getCategories(this.legalCountryFiltersCategoriesIds)
+    },
+    projectCategoriesAsFilters () {
+      return this.getCategories(this.legalProjectFiltersCategoriesIds)
+    }
+  },
+  methods: {
+    getCategories (arrayOfIds) {
+      if (this.categories.categoriesById) {
+        return arrayOfIds.reduce((previous, current) => {
+          previous.push(this.categories.categoriesById[current])
+          return previous
+        }, [])
+      } else {
+        return []
+      }
+    }
   }
 }
 </script>
