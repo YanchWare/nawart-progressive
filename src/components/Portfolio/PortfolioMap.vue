@@ -67,7 +67,7 @@ export default {
       this.myMap.scrollWheelZoom.disable()
       this.myMap.on({click: () => { this.myMap.scrollWheelZoom.enable() }, mouseout: () => { this.myMap.scrollWheelZoom.disable() }})
       Leaflet.tileLayer('https://api.mapbox.com/styles/v1/amenuor/ciz06kin600052rmej3o9yrsf/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1lbnVvciIsImEiOiJjaXlhZmxzeGkwMDR0MndvZXp3OWgybDI5In0.FVcU8LAD7RwwawnYR4Av8w', {
-        maxZoom: 18,
+        maxZoom: 5,
         attribution: '',
         id: 'mapbox.streets'
       }).addTo(this.myMap)

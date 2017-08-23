@@ -1,7 +1,5 @@
 import apiWrapper from '../../api/wordpress'
 import * as types from '../mutation-types'
-import { filtersDb } from '../../utilities/localDatabaseHandler'
-import { ALL_STATISTICS_DBKEY, CACHE_EXPIRY_MS } from '../../utilities/constants'
 
 // initial state
 const state = {
@@ -12,13 +10,6 @@ const state = {
     multimedia: [],
     years: [],
     authors: []
-  },
-  storiesCount: {
-    all: 0,
-    byYear: {},
-    byAuthor: {},
-    byMedia: {},
-    byMultimedia: {}
   }
 }
 
@@ -69,7 +60,7 @@ const actions = {
   },
   deactivateAuthorFilter ({ commit }, authorCategoryId) {
     commit(types.DEACTIVATE_AUTHOR_FILTER, authorCategoryId)
-  },
+  }
 }
 
 // mutations

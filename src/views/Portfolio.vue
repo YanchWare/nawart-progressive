@@ -65,7 +65,7 @@ export default {
       console.log('fetching more articles...')
       this.loading = true
       this.olderNumberOfArticles = this.allArticles ? Object.keys(this.allArticles).length : 0
-      this.$store.dispatch('fetchArticles', {languageCode: this.$i18n.locale(), startFromClean: false})
+      this.$store.dispatch('fetchArticles', {languageCode: this.$i18n.locale(), startFromClean: false, filters: this.portfolioFilters})
     }
   }
 }

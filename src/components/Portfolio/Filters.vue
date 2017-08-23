@@ -2,28 +2,19 @@
   <div id="filters">
     <div v-if="countryCategoriesAsFilters && countryCategoriesAsFilters[0]" class="menu">
       <h2>{{$t('Countries')}}</h2>
-      <FilterToggle v-for="country in countryCategoriesAsFilters" 
+      <FilterToggle v-for="country in countryCategoriesAsFilters" v-if="country"
         :filter="country" 
         :key="country.id" 
         :type="FILTER_COUNTRY_TYPE" 
         :currentActiveFilters="currentFilters.countries"/>
     </div>
-    <div class="menu">
-      <h2>{{$t('Media')}}</h2>
-    </div>
     <div v-if="projectCategoriesAsFilters && projectCategoriesAsFilters[0]" class="menu">
       <h2>{{$t('Projects')}}</h2>
-      <FilterToggle v-for="project in projectCategoriesAsFilters" 
+      <FilterToggle v-for="project in projectCategoriesAsFilters" v-if="project"
         :filter="project" 
         :key="project.id" 
         :type="FILTER_PROJECT_TYPE" 
         :currentActiveFilters="currentFilters.projects"/>
-    </div>
-    <div class="menu">
-      <h2>{{$t('Multimedia')}}</h2>
-    </div>
-    <div class="menu">
-      <h2>{{$t('Years')}}</h2>
     </div>
     <div class="menu">
       <h2>{{$t('Authors')}}</h2>

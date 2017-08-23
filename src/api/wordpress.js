@@ -23,15 +23,9 @@ const getAllCategories = (languageCode, page) => {
   })
 }
 
-const getLatestArticles = (languageCode, allArticles) => {
-  const articlesIds = allArticles ? Object.keys(allArticles).reduce((previous, current) => {
-    if (current && allArticles[current].id) {
-      previous.push(allArticles[current].id)
-    }
-    return previous
-  }, []) : []
+const getLatestArticles = (languageCode, allArticles, filters) => {
   return client({
-    path: baseEndpoint + (languageCode === 'en' ? '' : languageCode + '/') + articleEndpoint + (articlesIds.length > 0 ? '?exclude=' + articlesIds.toString().replace(/\[\]/g, '') : ''),
+    path: buildPostsPath(languageCode, allArticles, filters),
     method: 'GET'
   })
 }
@@ -41,6 +35,37 @@ const getPage = (pageSlug, languageCode) => {
     path: baseEndpoint + (languageCode === 'en' ? '' : languageCode + '/') + pageEndpoint + '?slug=' + pageSlug,
     method: 'GET'
   })
+}
+
+const buildPostsPath = (languageCode, allArticles, portfolioFilters) => {
+
+  const articlesIds = allArticles ? Object.keys(allArticles).reduce((previous, current) => {
+    if (current && allArticles[current].id) {
+      previous.push(allArticles[current].id)
+    }
+    return previous
+  }, []) : []
+
+  const categories = portfolioFilters ? portfolioFilters.countries.concat(portfolioFilters.projects) : []
+  
+  // Base path
+  let path = baseEndpoint 
+  // If current language is english we should omit the language code
+  path += (languageCode === 'en' ? '' : languageCode + '/') 
+  // posts endpoint
+  path += articleEndpoint 
+  // add list of articles we already have
+  const excludeParam = articlesIds.length > 0 ? 'exclude=' + articlesIds.toString().replace(/\[\]/g, '') : null
+  path = excludeParam ? addParamToPath(path, excludeParam) : path
+  // add list of categories based on the current filters
+  const categoriesParam = categories.length > 0 ? 'categories=' + categories.toString().replace(/\[\]/g, '') : null
+  path = categoriesParam ? addParamToPath(path, categoriesParam) : path
+
+  return path
+}
+
+const addParamToPath = (path, param) => {
+  return path.indexOf('?') > -1 ? path + '&' + param : path + '?' + param
 }
 
 module.exports = {
