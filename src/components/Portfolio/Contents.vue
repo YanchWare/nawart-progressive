@@ -20,12 +20,12 @@ export default {
       if (this.articles && this.currentFilters) {
         return Object.keys(this.articles).reduce((previous, current) => {
           const currentArticlesCat = this.articles[current].categories
-          let shownByCountry = this.currentFilters.countries.length == 0
-          let shownByMedia = this.currentFilters.medias.length == 0
-          let shownByProject = this.currentFilters.projects.length == 0
-          let shownByMultimedia = this.currentFilters.multimedia.length == 0
-          let shownByYear = this.currentFilters.years.length == 0
-          let shownByAuthor = this.currentFilters.authors.length == 0
+          let shownByCountry = this.currentFilters.countries.length === 0
+          let shownByMedia = this.currentFilters.medias.length === 0
+          let shownByProject = this.currentFilters.projects.length === 0
+          let shownByMultimedia = this.currentFilters.multimedia.length === 0
+          let shownByYear = this.currentFilters.years.length === 0
+          let shownByAuthor = this.currentFilters.authors.length === 0
 
           // Checking category-related filters
           for (let i = 0; i < currentArticlesCat.length; i++) {
@@ -44,7 +44,7 @@ export default {
           if (shownByCountry && shownByMedia && shownByProject && shownByMultimedia && shownByYear && shownByAuthor) {
             previous.push(this.articles[current])
           }
-          return previous;
+          return previous
         }, [])
       } else {
         return this.articles

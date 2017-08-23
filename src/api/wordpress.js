@@ -38,7 +38,6 @@ const getPage = (pageSlug, languageCode) => {
 }
 
 const buildPostsPath = (languageCode, allArticles, portfolioFilters) => {
-
   const articlesIds = allArticles ? Object.keys(allArticles).reduce((previous, current) => {
     if (current && allArticles[current].id) {
       previous.push(allArticles[current].id)
@@ -47,13 +46,13 @@ const buildPostsPath = (languageCode, allArticles, portfolioFilters) => {
   }, []) : []
 
   const categories = portfolioFilters ? portfolioFilters.countries.concat(portfolioFilters.projects) : []
-  
+
   // Base path
-  let path = baseEndpoint 
+  let path = baseEndpoint
   // If current language is english we should omit the language code
-  path += (languageCode === 'en' ? '' : languageCode + '/') 
+  path += languageCode === 'en' ? '' : languageCode + '/'
   // posts endpoint
-  path += articleEndpoint 
+  path += articleEndpoint
   // add list of articles we already have
   const excludeParam = articlesIds.length > 0 ? 'exclude=' + articlesIds.toString().replace(/\[\]/g, '') : null
   path = excludeParam ? addParamToPath(path, excludeParam) : path

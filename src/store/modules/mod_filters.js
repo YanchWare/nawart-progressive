@@ -1,4 +1,3 @@
-import apiWrapper from '../../api/wordpress'
 import * as types from '../mutation-types'
 
 // initial state
