@@ -33,7 +33,8 @@ const actions = {
     })
   },
   fetchArticles ({ state, commit }, {languageCode, startFromClean, type, filters}) {
-    apiWrapper.getLatestArticles(languageCode, (startFromClean ? null : state.allArticles), filters).then(response => {
+    const allArticles =  state ? state.allArticles : null
+    apiWrapper.getLatestArticles(languageCode, (startFromClean ? null : allArticles), filters).then(response => {
       if (response.status.code === 200 && response.entity) {
         // TODO: As in categories understand when we should stop fetching articles
         commit(type || types.NEW_ARTICLES_RECEIVED, {entity: response.entity, languageCode, startFromClean})

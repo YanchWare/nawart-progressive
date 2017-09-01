@@ -11,7 +11,7 @@
           <span class="datetime">{{ new Date(story.date) | ISODate}}</span>
         </div>
         <div class="article-title">
-          <h2><router-link :to="'/' + story.slug">{{story.title.rendered}}</router-link></h2>
+          <router-link :to="'/' + story.slug"><h2 v-html="story.title.rendered"></h2></router-link>
         </div>
         <div class="testata">
           <img v-if="story.fields.testata_giornalistica" :src="'//nawartpress.com/' + story.fields.testata_giornalistica">

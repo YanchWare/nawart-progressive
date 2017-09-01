@@ -28,7 +28,7 @@ export default {
           let shownByAuthor = this.currentFilters.authors.length === 0
 
           // Checking category-related filters
-          for (let i = 0; i < currentArticlesCat.length; i++) {
+          for (let i = 0; currentArticlesCat && i < currentArticlesCat.length; i++) {
             // Country
             if (!shownByCountry) {
               shownByCountry = this.currentFilters.countries.indexOf(currentArticlesCat[i]) > -1
