@@ -232,7 +232,7 @@
 
 <script>
 import Loading from '../components/Loading'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'about',
@@ -264,6 +264,9 @@ export default {
   },
 
   methods: {
+    ...mapActions([
+      'fetchPage'
+    ]),
     render () {
       const pageSlug = 'about-2'
       if (this.allArticles) {
@@ -277,7 +280,7 @@ export default {
     },
 
     fetchContents (pageSlug) {
-      this.$store.dispatch('fetchPage', {pageSlug, languageCode: this.$i18n.locale()})
+      this.fetchPage({pageSlug, languageCode: this.$i18n.locale()})
     }
   }
 }

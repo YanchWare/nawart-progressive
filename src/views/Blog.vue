@@ -1,12 +1,11 @@
 <template>
   <div>
     <div v-if="blogArticles">
-      <div class="row text-center">
-        <div class="small-12 columns" v-for="story in blogArticles" :key="story.id">
+      <div class="row text-center" v-for="story in blogArticles" :key="story.id">
+        <div class="small-12 columns">
           <ArticleExcerpt :story="story" :categories="allCategories"/>
           <hr />
         </div>
-        <hr/>
       </div>
     </div>
     <div v-else class="loading">
@@ -24,7 +23,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'frontpage',
   computed: {
-    ... mapGetters({
+    ...mapGetters({
       allArticles: 'allArticles',
       allCategories: 'allCategories'
     }),
@@ -33,8 +32,8 @@ export default {
         return null
       }
       return Object.keys(this.allArticles).filter(value => {
-        return this.allArticles[value] && 
-          this.allArticles[value].categories && 
+        return this.allArticles[value] &&
+          this.allArticles[value].categories &&
           this.allArticles[value].categories.indexOf(BLOG_CATEGORY_ID) > -1
       }).reduce((previous, current) => {
         previous[current] = this.allArticles[current]

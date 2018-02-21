@@ -15,7 +15,7 @@
     <div class="row">
       <div class="small-12 columns">
         <Contents :articles="allArticles" :currentFilters="portfolioFilters"></Contents>
-        <Loading v-if="loading"/>
+        <Loading v-if="articleLoading"/>
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@ import PortfolioMap from '../components/Portfolio/PortfolioMap'
 import Filters from '../components/Portfolio/Filters'
 import Contents from '../components/Portfolio/Contents'
 import Loading from '../components/Loading'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'portfolio',
@@ -39,11 +39,11 @@ export default {
   computed: mapGetters({
     allArticles: 'allArticles',
     allCategories: 'allCategories',
-    portfolioFilters: 'portfolioFilters'
+    portfolioFilters: 'portfolioFilters',
+    articleLoading: 'articleLoading'
   }),
   data () {
     return {
-      loading: false,
       olderNumberOfArticles: 0
     }
   },
@@ -55,17 +55,13 @@ export default {
     }
     window.$('#footer').scrollfire(options)
   },
-  updated () {
-    if (this.loading && this.allArticles && Object.keys(this.allArticles).length > this.olderNumberOfArticles) {
-      this.loading = false
-    }
-  },
   methods: {
+    ...mapActions([
+      'fetchArticles'
+    ]),
     fetchMoreArticles () {
-      console.log('fetching more articles...')
-      this.loading = true
       this.olderNumberOfArticles = this.allArticles ? Object.keys(this.allArticles).length : 0
-      this.$store.dispatch('fetchArticles', {languageCode: this.$i18n.locale(), startFromClean: false, filters: this.portfolioFilters})
+      this.fetchArticles({languageCode: this.$i18n.locale(), startFromClean: false, filters: this.portfolioFilters})
     }
   }
 }

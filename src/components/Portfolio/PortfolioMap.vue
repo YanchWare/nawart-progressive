@@ -24,6 +24,7 @@ export default {
       countriesLatLang: [
         { catId: '654', location: [41, 20], name: 'Albania' },
         { catId: '867', location: [41.66667, 21.75], name: 'Balcani' },
+        { catId: '1100', location: [23.8103, 90.4125], name: 'Bangladesh' },
         { catId: '659', location: [48, 68], name: 'Central Asia' },
         { catId: '687', location: [-2.5, 23.5], name: 'Congo' },
         { catId: '15', location: [27, 30], name: 'Egypt' },

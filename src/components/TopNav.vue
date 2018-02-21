@@ -109,7 +109,8 @@ export default {
 
   methods: {
     ...mapActions([
-      'registerNewUser'
+      'initializeArticlesFromLocalDB',
+      'initializeCategoriesFromLocalDB'
     ]),
     closeOffCanvas () {
       window.$('#offCanvasLeft').foundation('toggle')
@@ -122,8 +123,8 @@ export default {
     },
     changeLanguage (languageCode) {
       this.$i18n.set(languageCode)
-      this.$store.dispatch('initializeArticlesFromLocalDB', languageCode)
-      this.$store.dispatch('initializeCategoriesFromLocalDB', languageCode)
+      this.initializeArticlesFromLocalDB(languageCode)
+      this.initializeCategoriesFromLocalDB(languageCode)
     }
   },
 

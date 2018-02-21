@@ -6,13 +6,15 @@ import { ALL_ARTICLES_DBKEY, NEWEST_ARTICLES_DBKEY, CACHE_EXPIRY_MS } from '../.
 // initial state
 const state = {
   allArticles: null,
-  newestArticles: null
+  newestArticles: null,
+  articleLoading: false
 }
 
 // getters
 const getters = {
   allArticles: state => state.allArticles,
-  newestArticles: state => state.newestArticles
+  newestArticles: state => state.newestArticles,
+  articleLoading: state => state.articleLoading
 }
 
 // actions
@@ -33,7 +35,7 @@ const actions = {
     })
   },
   fetchArticles ({ state, commit }, {languageCode, startFromClean, type, filters}) {
-    const allArticles =  state ? state.allArticles : null
+    const allArticles = state ? state.allArticles : null
     apiWrapper.getLatestArticles(languageCode, (startFromClean ? null : allArticles), filters).then(response => {
       if (response.status.code === 200 && response.entity) {
         // TODO: As in categories understand when we should stop fetching articles
@@ -43,6 +45,7 @@ const actions = {
       // TODO: handle error - Notify user
       console.error(err)
     })
+    commit(type || types.NEW_ARTICLES_REQUESTED)
   },
   // TODO: Fetch a single article if it has not been updated in a long time. Remove it if it respond with a 404 error.
   fetchPage ({ commit }, {pageSlug, languageCode}) {
@@ -59,6 +62,9 @@ const actions = {
 
 // mutations
 const mutations = {
+  [types.NEW_ARTICLES_REQUESTED] (state) {
+    state.articleLoading = true
+  },
   [types.NEW_PAGE_RECEIVED] (state, pageInfo) {
     if (!pageInfo) {
       return
@@ -143,6 +149,7 @@ const mutations = {
     state.allArticles = {
       ...newArticles
     }
+    state.articleLoading = false
 
     articlesDb.set(ALL_ARTICLES_DBKEY + languageCode, state.allArticles)
   }

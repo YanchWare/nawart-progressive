@@ -1,6 +1,7 @@
 <template>
   <div class="story" v-if="story && story.type !== 'page' && story.title.rendered">
     <img v-if="mediaUrl" class="story-image" :src="mediaUrl"/>
+    <span class="datetime">{{ new Date(story.date) | ISODate}}</span>
     <router-link :to="'/' + story.slug" >
       <div v-html="story.title.rendered"></div>
     </router-link>

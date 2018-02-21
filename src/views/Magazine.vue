@@ -25,7 +25,7 @@ export default {
   mounted () {
     var script = document.createElement('script')
     script.type = 'text/javascript'
-    script.src = '/static/js/vendor/issu-embed.js'
+    script.src = '//e.issuu.com/embed.js'
     document.head.appendChild(script)
   }
 }

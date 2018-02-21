@@ -9,7 +9,7 @@
         :currentActiveFilters="currentFilters.countries"/>
     </div>
     <div v-if="projectCategoriesAsFilters && projectCategoriesAsFilters[0]" class="menu">
-      <h2>{{$t('Projects')}}</h2>
+      <h2>{{$t('Projects and Documentaries')}}</h2>
       <FilterToggle v-for="project in projectCategoriesAsFilters" v-if="project"
         :filter="project" 
         :key="project.id" 
@@ -39,7 +39,7 @@ export default {
   },
   data () {
     return {
-      legalCountryFiltersCategoriesIds: [654, 867, 659, 687, 15, 959, 689, 656, 898, 17, 16, 658, 685, 691, 660, 690, 688, 657, 692],
+      legalCountryFiltersCategoriesIds: [654, 867, 659, 687, 15, 959, 689, 656, 898, 17, 16, 658, 685, 691, 660, 690, 688, 657, 692, 1100],
       legalProjectFiltersCategoriesIds: [661, 908]
     }
   },
@@ -75,7 +75,15 @@ export default {
         return arrayOfIds.reduce((previous, current) => {
           previous.push(this.categories.categoriesById[current])
           return previous
-        }, [])
+        }, []).sort((categoryA, categoryB) => {
+          if (categoryA.name < categoryB.name) {
+            return -1
+          }
+          if (categoryA.name > categoryB.name) {
+            return 1
+          }
+          return 0
+        })
       } else {
         return []
       }

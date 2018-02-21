@@ -39,7 +39,7 @@ export default {
       'deactivateAuthorFilter'
     ]),
     changeFilterState () {
-      if (this.filterChecked) {
+      if (!this.filterChecked) {
         switch (this.type) {
           case FILTER_COUNTRY_TYPE:
             this.activateCountryFilter(this.filter.id)

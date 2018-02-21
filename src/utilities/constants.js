@@ -16,7 +16,7 @@ const FILTER_MULTIMEDIA_TYPE = 'FILTER_MULTIMEDIA_TYPE'
 const FILTER_YEAR_TYPE = 'FILTER_YEAR_TYPE'
 const FILTER_AUTHOR_TYPE = 'FILTER_AUTHOR_TYPE'
 
-//Categories
+// Categories
 const BLOG_CATEGORY_ID = 9
 
 module.exports = {

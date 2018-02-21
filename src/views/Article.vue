@@ -21,7 +21,7 @@ import { mapGetters } from 'vuex'
 import { getCategories } from '../utilities/apiSupport'
 
 export default {
-  name: 'article',
+  name: 'article-view',
   computed: mapGetters({
     allArticles: 'allArticles',
     allCategories: 'allCategories'

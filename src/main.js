@@ -36,7 +36,7 @@ const router = new VueRouter({
   routes: [
     { path: '/', name: 'frontpage', component: Frontpage },
     { path: '/about', name: 'about', component: About },
-    { path: '/category/blog', name: 'about', component: Blog },
+    { path: '/category/blog', name: 'blog', component: Blog },
     { path: '/portfolio', name: 'portfolio', component: Portfolio },
     { path: '/magazine', name: 'magazine', component: Magazine },
     { path: '/:articleSlug', name: 'article', component: Article }
