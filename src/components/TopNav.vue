@@ -63,6 +63,7 @@
                   <li><a @click="changeLanguage('en')">English</a></li>
                   <li><a @click="changeLanguage('it')">Italiano</a></li>
                   <li><a @click="changeLanguage('fr')">Français</a></li>
+                  <li><a @click="changeLanguage('de')">Deutsch</a></li>
                 </ul>
               </li>
             </ul>

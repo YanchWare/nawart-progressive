@@ -14,7 +14,7 @@ import store from './store'
 import modArticles from './store/modules/mod_articles'
 import modCategories from './store/modules/mod_categories'
 import vuexI18n from 'vuex-i18n'
-import {translationsEn, translationsFr, translationsIt} from './internazionalization'
+import {translationsEn, translationsFr, translationsIt, translationsDe} from './internazionalization'
 import activateAllPolyfills from './utilities/polyfills'
 
 activateAllPolyfills()
@@ -26,6 +26,7 @@ Vue.use(vuexI18n.plugin, store)
 Vue.i18n.add('en', translationsEn)
 Vue.i18n.add('fr', translationsFr)
 Vue.i18n.add('it', translationsIt)
+Vue.i18n.add('de', translationsDe)
 
 Vue.i18n.set('it') // TODO: Base it on stored info and / or browser settings
 

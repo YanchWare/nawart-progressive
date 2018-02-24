@@ -1,11 +1,9 @@
 <template>
   <div>
     <div v-if="blogArticles">
-      <div class="row text-center" v-for="story in blogArticles" :key="story.id">
-        <div class="small-12 columns">
-          <ArticleExcerpt :story="story" :categories="allCategories"/>
-          <hr />
-        </div>
+      <div class="row text-center" v-for="(story, index) in blogArticles" :key="story.id">
+          <TwoExcerpts v-if="index % 2 == 0"
+            :stories="[blogArticles[index], blogArticles[index+1]]" :categories="allCategories"/>
       </div>
     </div>
     <div v-else class="loading">
@@ -15,10 +13,12 @@
 </template>
 
 <script>
-import ArticleExcerpt from '../components/ArticleExcerpt'
+import TwoExcerpts from '../components/TwoExcerpts'
 import Loading from '../components/Loading'
 import { BLOG_CATEGORY_ID } from '../utilities/constants'
 import { mapGetters } from 'vuex'
+
+// TODO: Lazy loading of more articles
 
 export default {
   name: 'frontpage',
@@ -36,14 +36,16 @@ export default {
           this.allArticles[value].categories &&
           this.allArticles[value].categories.indexOf(BLOG_CATEGORY_ID) > -1
       }).reduce((previous, current) => {
-        previous[current] = this.allArticles[current]
+        previous.push(this.allArticles[current])
         return previous
-      }, {})
+      }, []).sort((articleA, articleB) => {
+        return new Date(articleB.date) - new Date(articleA.date)
+      })
     }
   },
 
   components: {
-    ArticleExcerpt,
+    TwoExcerpts,
     Loading
   }
 }
