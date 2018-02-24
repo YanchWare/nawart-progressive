@@ -1,18 +1,22 @@
 <template>
   <div id="contents">
+    <div class="row">
+    </div>
     <Story v-for="story in storiesToShow" :story="story" :key="story.id"></Story>
   </div>
 </template>
 
 <script>
 import Story from './Story'
+import LoadPage from '../Generic/LoadPage'
 
 export default {
   name: 'contents',
   props: ['articles', 'currentFilters'],
 
   components: {
-    Story
+    Story,
+    LoadPage
   },
 
   computed: {

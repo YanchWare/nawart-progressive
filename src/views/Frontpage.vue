@@ -13,18 +13,19 @@
             :stories="[latestNonBlogArticles[1], latestNonBlogArticles[2]]" :categories="allCategories"/>
           <TwoExcerpts 
             :stories="[latestNonBlogArticles[3], latestNonBlogArticles[4]]" :categories="allCategories"/>
+          <About-Nawart :locale="$i18n.locale()" :allArticles="allArticles" />
         </div>
         <div class="large-4 small-12 columns">
           <TwitterWidget/>
         </div>
       </div>
       <div class="row">
-        <AboutNawart></AboutNawart>
       </div>
     </div>
     <div v-else class="loading">
       <Loading/>
     </div>
+    <hr/>
     <Magazine/>
     <ContactsMap/>
   </div>
@@ -34,15 +35,16 @@
 import ArticleExcerpt from '../components/ArticleExcerpt'
 import TwoExcerpts from '../components/TwoExcerpts'
 import TwitterWidget from '../components/TwitterWidget'
-import AboutNawart from '../components/AboutNawart'
-import ContactsMap from '../components/ContactsMap'
+import AboutNawart from '../components/Frontpage/AboutNawart'
+import ContactsMap from '../components/Frontpage/ContactsMap'
 import Magazine from '../components/Magazine'
-import Loading from '../components/Loading'
+import Loading from '../components/Generic/Loading'
 import { mapGetters } from 'vuex'
 import { BLOG_CATEGORY_ID } from '../utilities/constants'
 
 export default {
   name: 'frontpage',
+
   computed: {
     ...mapGetters({
       newestArticles: 'newestArticles',

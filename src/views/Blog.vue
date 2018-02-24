@@ -14,7 +14,7 @@
 
 <script>
 import TwoExcerpts from '../components/TwoExcerpts'
-import Loading from '../components/Loading'
+import Loading from '../components/Generic/Loading'
 import { BLOG_CATEGORY_ID } from '../utilities/constants'
 import { mapGetters } from 'vuex'
 

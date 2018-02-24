@@ -1,8 +1,9 @@
 <template>
   <div id="about">
     <div class="row">
-      <div v-if="article" class="large-6 small-12 columns" v-html="article.content.rendered"></div>
-      <div v-else class="large-6 small-12 columns"><Loading/></div>
+      <div class="large-6 small-12 columns">
+        <Load-Page :allArticles="allArticles" :locale="locale" pageSlug="about-2" />        
+      </div>
       <div class="large-6 small-12 columns">
         <div clas="large-12 columns text-center">
           <h3 style="text-align: center;">
@@ -231,8 +232,8 @@
 </template>
 
 <script>
-import Loading from '../components/Loading'
-import { mapGetters, mapActions } from 'vuex'
+import LoadPage from '../components/Generic/LoadPage'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'about',
@@ -242,47 +243,9 @@ export default {
   }),
 
   components: {
-    Loading
-  },
-
-  data () {
-    return {
-      loading: false,
-      article: null,
-      categoriesHtml: ''
-    }
-  },
-
-  created () {
-    this.render()
-  },
-
-  watch: {
-    // call again the method if the route changes
-    '$route': 'fetchData',
-    'allArticles': 'render'
-  },
-
-  methods: {
-    ...mapActions([
-      'fetchPage'
-    ]),
-    render () {
-      const pageSlug = 'about-2'
-      if (this.allArticles) {
-        const article = this.allArticles[pageSlug]
-        if (article) {
-          this.article = article
-          return
-        }
-      }
-      this.fetchContents(pageSlug)
-    },
-
-    fetchContents (pageSlug) {
-      this.fetchPage({pageSlug, languageCode: this.$i18n.locale()})
-    }
+    LoadPage
   }
+
 }
 </script>
 

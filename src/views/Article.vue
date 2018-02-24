@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Loading from '../components/Loading'
+import Loading from '../components/Generic/Loading'
 import { mapGetters } from 'vuex'
 import { getCategories } from '../utilities/apiSupport'
 

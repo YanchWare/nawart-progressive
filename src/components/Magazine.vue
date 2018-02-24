@@ -11,7 +11,7 @@
             <span>{{$t('Number One')}}</span>
           </div>
           <div class="card-section">
-            <router-link to="/magazine" class="button secondary expanded" href="#"><i class="fa fa-file-pdf-o"></i>Table of contents</router-link>
+            <router-link to="/magazine" class="button secondary expanded" href="#"><i class="fa fa-file-pdf-o"></i>{{$t('Table of contents')}}</router-link>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
             <span>{{$t('Number Zero')}}</span>
           </div>
           <div class="card-section">
-            <router-link to="/magazine" class="button secondary expanded" href="#"><i class="fa fa-file-pdf-o"></i>Table of contents</router-link>
+            <router-link to="/magazine" class="button secondary expanded" href="#"><i class="fa fa-file-pdf-o"></i>{{$t('Table of contents')}}</router-link>
           </div>
         </div>
       </div>

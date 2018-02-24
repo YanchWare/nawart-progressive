@@ -25,7 +25,7 @@
 import PortfolioMap from '../components/Portfolio/PortfolioMap'
 import Filters from '../components/Portfolio/Filters'
 import Contents from '../components/Portfolio/Contents'
-import Loading from '../components/Loading'
+import Loading from '../components/Generic/Loading'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {

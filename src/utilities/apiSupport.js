@@ -18,6 +18,21 @@ const getMedia = (featuredMedia) => {
   })
 }
 
+const getThumbnail = (featuredMedia) => {
+  return apiWrapper.getMedia(featuredMedia).then(response => {
+    if (response.entity.media_details && response.entity.media_details.sizes.medium) {
+      return response.entity.media_details.sizes.medium.source_url
+    }
+    if (response.entity.media_details && response.entity.media_details.sizes['post-thumbnail']) {
+      return response.entity.media_details.sizes['post-thumbnail'].source_url
+    }
+    if (response.entity.media_details && response.entity.media_details.sizes.thumbnail) {
+      return response.entity.media_details.sizes.thumbnail.source_url
+    }
+    return response.entity.source_url
+  })
+}
+
 const getCategories = (categoryIds, categories) => {
   if (!categoryIds || !categories) {
     return ''
@@ -34,5 +49,6 @@ const getCategories = (categoryIds, categories) => {
 
 module.exports = {
   getMedia,
+  getThumbnail,
   getCategories
 }

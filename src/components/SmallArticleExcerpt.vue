@@ -26,8 +26,8 @@
 </template>
 
 <script>
-  import { getMedia, getCategories } from '../utilities/apiSupport'
-  import Loading from '../components/Loading'
+  import { getThumbnail, getCategories } from '../utilities/apiSupport'
+import Loading from '../components/Generic/Loading'
 
   export default {
     name: 'smallArticleExcerpt',
@@ -45,7 +45,7 @@
 
     mounted () {
       if (this.story) {
-        getMedia(this.story.featured_media).then(mediaUrl => {
+        getThumbnail(this.story.featured_media).then(mediaUrl => {
           this.mediaUrl = mediaUrl
         }).catch(err => {
           console.error(err)

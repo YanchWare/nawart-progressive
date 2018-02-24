@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { getMedia } from '../../utilities/apiSupport'
+import { getThumbnail } from '../../utilities/apiSupport'
 
 export default {
   name: 'story',
@@ -20,7 +20,7 @@ export default {
     }
   },
   mounted () {
-    getMedia(this.story.featured_media).then(mediaUrl => {
+    getThumbnail(this.story.featured_media).then(mediaUrl => {
       this.mediaUrl = mediaUrl
     }).catch(err => {
       console.error(err)

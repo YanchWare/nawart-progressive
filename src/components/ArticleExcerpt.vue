@@ -27,7 +27,7 @@
 
 <script>
   import { getMedia, getCategories } from '../utilities/apiSupport'
-  import Loading from '../components/Loading'
+import Loading from '../components/Generic/Loading'
   
   export default {
     name: 'articleExcerpt',
