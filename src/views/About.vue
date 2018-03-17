@@ -2,7 +2,7 @@
   <div id="about">
     <div class="row">
       <div class="large-6 small-12 columns">
-        <Load-Page :allArticles="allArticles" :locale="locale" pageSlug="about-2" />        
+        <Load-Page :allArticles="allArticles" :locale="$i18n.locale()" pageSlug="about-2" />        
       </div>
       <div class="large-6 small-12 columns">
         <div clas="large-12 columns text-center">

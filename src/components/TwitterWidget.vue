@@ -23,7 +23,7 @@ export default {
       }(document, 'script', 'twitter-wjs' + new Date()))
       setTimeout(() => {
         window.$('iframe').css('height', '200vh')
-      }, 1000)
+      }, 2000)
     }
   }
 }

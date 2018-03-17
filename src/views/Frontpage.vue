@@ -13,13 +13,13 @@
             :stories="[latestNonBlogArticles[1], latestNonBlogArticles[2]]" :categories="allCategories"/>
           <TwoExcerpts 
             :stories="[latestNonBlogArticles[3], latestNonBlogArticles[4]]" :categories="allCategories"/>
-          <About-Nawart :locale="$i18n.locale()" :allArticles="allArticles" />
         </div>
         <div class="large-4 small-12 columns">
           <TwitterWidget/>
         </div>
       </div>
       <div class="row">
+        <About-Nawart :locale="$i18n.locale()" :allArticles="allArticles" />
       </div>
     </div>
     <div v-else class="loading">

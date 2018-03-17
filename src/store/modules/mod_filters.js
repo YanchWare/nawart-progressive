@@ -85,13 +85,10 @@ const mutations = {
   },
 
   [types.ACTIVATE_PROJECT_FILTER] (state, projectCategoryId) {
-    state.portfolioFilters.projects.push(projectCategoryId)
+    state.portfolioFilters.projects = [projectCategoryId]
   },
   [types.DEACTIVATE_PROJECT_FILTER] (state, projectCategoryId) {
-    const indexOfItemToRemove = state.portfolioFilters.projects.indexOf(projectCategoryId)
-    if (indexOfItemToRemove > -1) {
-      state.portfolioFilters.projects.splice(indexOfItemToRemove, 1)
-    }
+    state.portfolioFilters.projects = []
   },
 
   [types.ACTIVATE_MULTIMEDIA_FILTER] (state, multimediaCategoryId) {

@@ -74,6 +74,7 @@ const mutations = {
     if (!page || !page.length > 0 || !languageCode) {
       return
     }
+    page.lastUpdated = Date.now()
     const newAllArticles = { ...state.allArticles }
     newAllArticles[page[0].slug] = page[0]
     state.allArticles = newAllArticles

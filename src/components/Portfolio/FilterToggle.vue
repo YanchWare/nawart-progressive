@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 import { FILTER_COUNTRY_TYPE,
   FILTER_MEDIA_TYPE,
   FILTER_PROJECT_TYPE,
@@ -22,6 +22,10 @@ export default {
     return {
       filterChecked: this.currentActiveFilters ? this.currentActiveFilters.indexOf(this.filter.id) > -1 : false
     }
+  },
+  watch: {
+    // call again the method if the route changes
+    'currentActiveFilters': 'checkFilterState'
   },
   methods: {
     ...mapActions([
@@ -38,6 +42,9 @@ export default {
       'activateAuthorFilter',
       'deactivateAuthorFilter'
     ]),
+    checkFilterState () {
+      this.filterChecked = this.currentActiveFilters ? this.currentActiveFilters.indexOf(this.filter.id) > -1 : false
+    },
     changeFilterState () {
       if (!this.filterChecked) {
         switch (this.type) {

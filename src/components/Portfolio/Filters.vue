@@ -40,7 +40,7 @@ export default {
   data () {
     return {
       legalCountryFiltersCategoriesIds: [654, 867, 659, 687, 15, 959, 689, 656, 898, 17, 16, 658, 685, 691, 660, 690, 688, 657, 692, 1100],
-      legalProjectFiltersCategoriesIds: [661, 908]
+      legalProjectFiltersCategoriesIds: [661, 908, 1110]
     }
   },
   computed: {

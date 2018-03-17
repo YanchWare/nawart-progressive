@@ -1,5 +1,8 @@
 <template>
   <div class="page">
+    <div v-if="showTitle">
+      <h2>{{article.title.rendered}}</h2>
+    </div>
     <div v-if="article" v-html="article.content.rendered">
     </div>
     <Loading v-else />
@@ -12,7 +15,7 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'Load-Page',
-  props: ['allArticles', 'pageSlug', 'locale'],
+  props: ['allArticles', 'pageSlug', 'locale', 'showTitle'],
 
   components: {
     Loading
@@ -30,7 +33,8 @@ export default {
   },
 
   watch: {
-    'allArticles': 'render'
+    'allArticles': 'render',
+    'pageSlug': 'render'
   },
 
   methods: {
@@ -38,14 +42,16 @@ export default {
       'fetchPage'
     ]),
     render () {
+      let article = null
       if (this.allArticles) {
-        const article = this.allArticles[this.pageSlug]
+        article = this.allArticles[this.pageSlug]
         if (article) {
           this.article = article
-          return
         }
       }
-      this.fetchContents(this.pageSlug)
+      if (!article || ((Date.now - article.lastUpdated) / 3.6e6) > 5) {
+        this.fetchContents(this.pageSlug)
+      }
     },
 
     fetchContents (pageSlug) {

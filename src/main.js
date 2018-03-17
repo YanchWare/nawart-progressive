@@ -16,12 +16,14 @@ import modCategories from './store/modules/mod_categories'
 import vuexI18n from 'vuex-i18n'
 import {translationsEn, translationsFr, translationsIt, translationsDe} from './internazionalization'
 import activateAllPolyfills from './utilities/polyfills'
+import VueYoutube from 'vue-youtube'
 
 activateAllPolyfills()
 
 Vue.use(VueHead)
 Vue.use(VueRouter)
 Vue.use(vuexI18n.plugin, store)
+Vue.use(VueYoutube)
 
 Vue.i18n.add('en', translationsEn)
 Vue.i18n.add('fr', translationsFr)

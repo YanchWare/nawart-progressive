@@ -1,6 +1,7 @@
 <template>
   <div id="contents">
     <div class="row">
+      <ProjectHeader :articles="articles" :locale="locale" v-if="currentFilters.projects.length === 1" :project-id="this.currentFilters.projects[0]"/>
     </div>
     <Story v-for="story in storiesToShow" :story="story" :key="story.id"></Story>
   </div>
@@ -9,14 +10,16 @@
 <script>
 import Story from './Story'
 import LoadPage from '../Generic/LoadPage'
+import ProjectHeader from './ProjectHeader'
 
 export default {
   name: 'contents',
-  props: ['articles', 'currentFilters'],
+  props: ['articles', 'currentFilters', 'locale'],
 
   components: {
     Story,
-    LoadPage
+    LoadPage,
+    ProjectHeader
   },
 
   computed: {
