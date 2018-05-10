@@ -51,6 +51,12 @@ export default {
             }
           }
 
+          // Author
+          if (!shownByAuthor) {
+            console.log(this.articles[current])
+            shownByAuthor = this.currentFilters.authors.indexOf(this.articles[current].author) > -1
+          }
+
           // Check all conditions
           if (shownByCountry && shownByMedia && shownByProject && shownByMultimedia && shownByYear && shownByAuthor) {
             previous.push(this.articles[current])

@@ -86,4 +86,8 @@ import Loading from '../components/Generic/Loading'
 .categories {
   text-transform: uppercase;
 }
+
+.extract {
+  overflow: hidden;
+}
 </style>

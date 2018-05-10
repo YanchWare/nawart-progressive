@@ -13,6 +13,7 @@ import VueRouter from 'vue-router'
 import store from './store'
 import modArticles from './store/modules/mod_articles'
 import modCategories from './store/modules/mod_categories'
+import modAuthors from './store/modules/mod_authors'
 import vuexI18n from 'vuex-i18n'
 import {translationsEn, translationsFr, translationsIt, translationsDe} from './internazionalization'
 import activateAllPolyfills from './utilities/polyfills'
@@ -55,3 +56,4 @@ new Vue({
 
 modArticles.actions.initializeArticlesFromLocalDB(store, Vue.i18n.locale())
 modCategories.actions.initializeCategoriesFromLocalDB(store, Vue.i18n.locale())
+modAuthors.actions.initializeAuthorsFromLocalDB(store, Vue.i18n.locale())

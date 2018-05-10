@@ -8,7 +8,7 @@
         <PortfolioMap :categories="allCategories" :currentFilters="portfolioFilters"></PortfolioMap>
       </div>
       <div class="large-4 small-12 columns hide-for-medium-only hide-for-small-only">
-        <Filters :categories="allCategories" :currentFilters="portfolioFilters"></Filters>
+        <Filters :categories="allCategories" :authors="allAuthors" :currentFilters="portfolioFilters"></Filters>
       </div>
     </div>
     <hr/>
@@ -39,6 +39,7 @@ export default {
   computed: mapGetters({
     allArticles: 'allArticles',
     allCategories: 'allCategories',
+    allAuthors: 'allAuthors',
     portfolioFilters: 'portfolioFilters',
     articleLoading: 'articleLoading'
   }),

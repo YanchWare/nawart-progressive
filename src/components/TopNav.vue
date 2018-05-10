@@ -111,7 +111,8 @@ export default {
   methods: {
     ...mapActions([
       'initializeArticlesFromLocalDB',
-      'initializeCategoriesFromLocalDB'
+      'initializeCategoriesFromLocalDB',
+      'initializeAuthorsFromLocalDB'
     ]),
     closeOffCanvas () {
       window.$('#offCanvasLeft').foundation('toggle')
@@ -126,6 +127,7 @@ export default {
       this.$i18n.set(languageCode)
       this.initializeArticlesFromLocalDB(languageCode)
       this.initializeCategoriesFromLocalDB(languageCode)
+      this.initializeAuthorsFromLocalDB(languageCode)
     }
   },
 

@@ -18,6 +18,11 @@
     </div>
     <div class="menu">
       <h2>{{$t('Authors')}}</h2>
+      <FilterToggle v-for="author in authorAsFilters" v-if="author"
+        :filter="author" 
+        :key="author.id" 
+        :type="FILTER_AUTHOR_TYPE" 
+        :currentActiveFilters="currentFilters.authors"/>
     </div>
   </div>
 </template>
@@ -33,14 +38,15 @@ import { FILTER_COUNTRY_TYPE,
 
 export default {
   name: 'filters',
-  props: ['categories', 'currentFilters'],
+  props: ['categories', 'currentFilters', 'authors'],
   components: {
     FilterToggle
   },
   data () {
     return {
       legalCountryFiltersCategoriesIds: [654, 867, 659, 687, 15, 959, 689, 656, 898, 17, 16, 658, 685, 691, 660, 690, 688, 657, 692, 1100],
-      legalProjectFiltersCategoriesIds: [661, 908, 1110]
+      legalProjectFiltersCategoriesIds: [661, 908, 1110],
+      legalAuthors: [2, 3, 4]
     }
   },
   computed: {
@@ -49,6 +55,9 @@ export default {
     },
     projectCategoriesAsFilters () {
       return this.getCategories(this.legalProjectFiltersCategoriesIds)
+    },
+    authorAsFilters () {
+      return this.getAuthors(this.legalAuthors)
     },
     FILTER_COUNTRY_TYPE () {
       return FILTER_COUNTRY_TYPE
@@ -70,16 +79,24 @@ export default {
     }
   },
   methods: {
+    getAuthors (arrayOfIds) {
+      return this.getEntity(arrayOfIds, this.authors.authorsById)
+    },
+
     getCategories (arrayOfIds) {
-      if (this.categories.categoriesById) {
-        return arrayOfIds.reduce((previous, current) => {
-          previous.push(this.categories.categoriesById[current])
+      return this.getEntity(arrayOfIds, this.categories.categoriesById)
+    },
+
+    getEntity (arrayOfEntityIds, entityContainer) {
+      if (entityContainer) {
+        return arrayOfEntityIds.reduce((previous, current) => {
+          previous.push(entityContainer[current])
           return previous
-        }, []).sort((categoryA, categoryB) => {
-          if (categoryA.name < categoryB.name) {
+        }, []).sort((entityA, entityB) => {
+          if (entityA.name < entityB.name) {
             return -1
           }
-          if (categoryA.name > categoryB.name) {
+          if (entityA.name > entityB.name) {
             return 1
           }
           return 0
@@ -88,6 +105,7 @@ export default {
         return []
       }
     }
+
   }
 }
 </script>

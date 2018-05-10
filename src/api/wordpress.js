@@ -7,11 +7,19 @@ const categoryEndpoint = 'wp-json/wp/v2/categories'
 const articleEndpoint = 'wp-json/wp/v2/posts'
 const pageEndpoint = 'wp-json/wp/v2/pages'
 const mediaEndpoint = 'wp-json/wp/v2/media/'
+const authorEndpoint = 'wp-json/wp/v2/users/'
 
 // TODO: Cache in IndexDB
 const getMedia = (mediaId) => {
   return client({
     path: baseEndpoint + mediaEndpoint + mediaId,
+    method: 'GET'
+  })
+}
+
+const getAllAuthors = (languageCode, page) => {
+  return client({
+    path: baseEndpoint + (languageCode === 'en' ? '' : languageCode + '/') + authorEndpoint + '?page=' + page,
     method: 'GET'
   })
 }
@@ -71,5 +79,6 @@ module.exports = {
   getMedia,
   getLatestArticles,
   getAllCategories,
+  getAllAuthors,
   getPage
 }

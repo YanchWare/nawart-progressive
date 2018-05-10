@@ -25,7 +25,7 @@ export default {
       pageSlugByProjectId: {
         '661': 'nawart-pwa-railway-diaries',
         '908': 'nawart-pwa-far-right-2016-2017',
-        '1110': 'nawart-pwa-'
+        '1110': 'nawart-pwa-migrations'
       }
     }
   },
