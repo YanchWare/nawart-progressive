@@ -21,13 +21,13 @@
         </div>
       </div>
     </div>
-    <div v-else class="row align-center"><Loading/</div>
+    <div v-else class="row align-center"><Loading/></div>
   </div>
 </template>
 
 <script>
-  import { getMedia, getCategories } from '../utilities/apiSupport'
-import Loading from '../components/Generic/Loading'
+  import { getMedia, getCategories } from '../../utilities/apiSupport'
+  import Loading from '../Generic/Loading'
   
   export default {
     name: 'articleExcerpt',

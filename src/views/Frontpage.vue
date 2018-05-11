@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import ArticleExcerpt from '../components/ArticleExcerpt'
-import TwoExcerpts from '../components/TwoExcerpts'
-import TwitterWidget from '../components/TwitterWidget'
+import ArticleExcerpt from '../components/Frontpage/ArticleExcerpt'
+import TwoExcerpts from '../components/Generic/TwoExcerpts'
+import TwitterWidget from '../components/Frontpage/TwitterWidget'
 import AboutNawart from '../components/Frontpage/AboutNawart'
 import ContactsMap from '../components/Frontpage/ContactsMap'
 import Magazine from '../components/Magazine'

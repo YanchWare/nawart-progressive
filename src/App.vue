@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import TopNav from './components/TopNav'
-import FooterNav from './components/FooterNav'
+import TopNav from './components/Theme/TopNav'
+import FooterNav from './components/Theme/FooterNav'
 import { mapGetters } from 'vuex'
 
 export default {

@@ -8,6 +8,7 @@ const state = {
     projects: [],
     multimedia: [],
     years: [],
+    categories: [],
     authors: []
   }
 }

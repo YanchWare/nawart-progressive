@@ -3,9 +3,10 @@ import App from './App'
 import Article from './views/Article'
 import Frontpage from './views/Frontpage'
 import About from './views/About'
-import Blog from './views/Blog'
+import ArticleList from './views/ArticleList'
 import Portfolio from './views/Portfolio'
 import Magazine from './views/Magazine'
+import ArticleListWithIntro from './views/ArticleListWithIntro'
 import Filters from './utilities/vueFilters'
 import Vue from 'vue'
 import VueHead from 'vue-head'
@@ -18,6 +19,12 @@ import vuexI18n from 'vuex-i18n'
 import {translationsEn, translationsFr, translationsIt, translationsDe} from './internazionalization'
 import activateAllPolyfills from './utilities/polyfills'
 import VueYoutube from 'vue-youtube'
+
+import { BLOG_CATEGORY_ID,
+  CONSULTANCIES_CATEGORY_ID,
+  NGO_CATEGORY_ID,
+  NGO_INTRO_SLUG,
+  CONSULTANCES_INTRO_SLUG } from './utilities/constants'
 
 activateAllPolyfills()
 
@@ -40,8 +47,10 @@ const router = new VueRouter({
   routes: [
     { path: '/', name: 'frontpage', component: Frontpage },
     { path: '/about', name: 'about', component: About },
-    { path: '/category/blog', name: 'blog', component: Blog },
+    { path: '/category/blog', name: 'blog', component: ArticleList, props: {categoryId: BLOG_CATEGORY_ID} },
     { path: '/portfolio', name: 'portfolio', component: Portfolio },
+    { path: '/consulenze', name: 'consulenze', component: ArticleListWithIntro, props: {categoryId: CONSULTANCIES_CATEGORY_ID, pageSlug: CONSULTANCES_INTRO_SLUG} },
+    { path: '/visibility-ngo', name: 'visibility-ngo', component: ArticleListWithIntro, props: {categoryId: NGO_CATEGORY_ID, pageSlug: NGO_INTRO_SLUG} },
     { path: '/magazine', name: 'magazine', component: Magazine },
     { path: '/:articleSlug', name: 'article', component: Article }
   ]

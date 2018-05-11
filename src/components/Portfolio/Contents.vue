@@ -9,7 +9,6 @@
 
 <script>
 import Story from './Story'
-import LoadPage from '../Generic/LoadPage'
 import ProjectHeader from './ProjectHeader'
 
 export default {
@@ -18,7 +17,6 @@ export default {
 
   components: {
     Story,
-    LoadPage,
     ProjectHeader
   },
 

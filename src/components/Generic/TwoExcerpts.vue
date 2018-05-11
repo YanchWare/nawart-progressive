@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import SmallArticleExcerpt from '../components/SmallArticleExcerpt'
+import SmallArticleExcerpt from './SmallArticleExcerpt'
 
 export default {
   name: 'frontpage',

@@ -45,7 +45,7 @@ const getPage = (pageSlug, languageCode) => {
   })
 }
 
-const buildPostsPath = (languageCode, allArticles, portfolioFilters) => {
+const buildPostsPath = (languageCode, allArticles, filters) => {
   const articlesIds = allArticles ? Object.keys(allArticles).reduce((previous, current) => {
     if (current && allArticles[current].id) {
       previous.push(allArticles[current].id)
@@ -53,7 +53,7 @@ const buildPostsPath = (languageCode, allArticles, portfolioFilters) => {
     return previous
   }, []) : []
 
-  const categories = portfolioFilters ? portfolioFilters.countries.concat(portfolioFilters.projects) : []
+  const categories = filters ? filters.countries.concat(filters.projects).concat(filters.categories) : []
 
   // Base path
   let path = baseEndpoint

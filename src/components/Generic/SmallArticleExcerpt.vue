@@ -21,13 +21,12 @@
         </div>
       </div>
     </div>
-    <div v-else class="row align-center"><Loading/></div>
   </div>
 </template>
 
 <script>
-  import { getThumbnail, getCategories } from '../utilities/apiSupport'
-import Loading from '../components/Generic/Loading'
+  import { getThumbnail, getCategories } from '../../utilities/apiSupport'
+  import Loading from './Loading'
 
   export default {
     name: 'smallArticleExcerpt',
@@ -64,7 +63,7 @@ import Loading from '../components/Generic/Loading'
 
     methods: {
       updated () {
-        if (this.categories) {
+        if (this.categories && this.story) {
           this.categoriesHtml = getCategories(this.story.categories, this.categories.categoriesById)
         }
       }

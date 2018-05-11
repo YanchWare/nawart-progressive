@@ -3,8 +3,9 @@
     <div v-if="article">
       <div class="row">
         <div class="small-12 columns">
-          <span class="categories" v-html="categoriesHtml"></span>
+          <span class="categories" v-html="categoriesHtml"></span>-<span class="datetime">{{ new Date(article.date) | ISODate}}</span>
           <h1 id="title" v-html="article.title.rendered"></h1>
+          <h2 id="author" v-html="author"></h2>
           <div class="contents" v-html="article.content.rendered"></div>
         </div>
       </div>
@@ -24,7 +25,8 @@ export default {
   name: 'article-view',
   computed: mapGetters({
     allArticles: 'allArticles',
-    allCategories: 'allCategories'
+    allCategories: 'allCategories',
+    allAuthors: 'allAuthors'
   }),
 
   components: {
@@ -35,6 +37,7 @@ export default {
     return {
       loading: false,
       article: null,
+      author: null,
       categoriesHtml: ''
     }
   },
@@ -47,7 +50,8 @@ export default {
     // call again the method if the route changes
     '$route': 'fetchData',
     'allArticles': 'render',
-    'allCategories': 'render'
+    'allCategories': 'render',
+    'allAuthors': 'render'
   },
 
   methods: {
@@ -60,10 +64,13 @@ export default {
           if (this.allCategories) {
             this.categoriesHtml = getCategories(this.article.categories, this.allCategories.categoriesById)
           }
-          return
+          if (this.allCategories) {
+            this.author = this.allAuthors.authorsById[article.author].name
+          }
         }
+      } else {
+        this.fetchContents()
       }
-      this.fetchContents()
     },
 
     fetchContents () {
@@ -86,4 +93,17 @@ h1 {
 .categories {
   text-transform: uppercase;
 }
+
+.datetime, .categories {
+  display: inline-block;
+}
+
+.datetime {
+  padding-left: 20px
+} 
+
+.categories {
+  padding-right: 20px
+}
+
 </style>
