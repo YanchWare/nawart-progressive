@@ -143,12 +143,14 @@ export default {
   background-color: #fff;
   color: #000;
   text-transform: uppercase;
+  font-family: Florence;
   font-weight: bold;
+  font-size: 23px;
 }
 
 .top-bar ul a.active {
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: rgb(239, 38, 115);
 }
 
 hr {
@@ -193,7 +195,7 @@ hr {
 }
 
 .nav-bar a:hover {
-  color: #a8b8c3;
+  color: rgb(239, 38, 115);
 }
 
 .nav-bar .offcanvas-trigger {

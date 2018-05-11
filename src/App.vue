@@ -40,8 +40,11 @@ export default {
 </script>
 
 <style>
+
   body{
-    font-family: 'Play',sans-serif;
+    font-family: 'AdobeCaslonProRegular';
+    font-size: 20px;
+    color: rgb(84, 83, 83);
     overflow-x: hidden;
     margin-top: 210px;
   }
@@ -52,7 +55,6 @@ export default {
   a {
     color: #000;
     transition: 0.2s;
-    text-decoration: underline;
   }
 
   a:hover {

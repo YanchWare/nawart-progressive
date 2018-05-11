@@ -1,0 +1,7 @@
+/* cyrillic-ext */
+@font-face {
+  font-family: 'AdobeCaslonProRegular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('AdobeCaslonProRegular'), local('AdobeCaslonProRegular'), url(../fonts/AdobeCaslonProRegular.ttf) format('truetype');
+}
