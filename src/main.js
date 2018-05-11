@@ -3,6 +3,7 @@ import App from './App'
 import Article from './views/Article'
 import Frontpage from './views/Frontpage'
 import About from './views/About'
+import Contacts from './views/Contacts'
 import ArticleList from './views/ArticleList'
 import Portfolio from './views/Portfolio'
 import Magazine from './views/Magazine'
@@ -47,6 +48,7 @@ const router = new VueRouter({
   routes: [
     { path: '/', name: 'frontpage', component: Frontpage },
     { path: '/about', name: 'about', component: About },
+    { path: '/contacts', name: 'contacts', component: Contacts },
     { path: '/category/blog', name: 'blog', component: ArticleList, props: {categoryId: BLOG_CATEGORY_ID} },
     { path: '/portfolio', name: 'portfolio', component: Portfolio },
     { path: '/consulenze', name: 'consulenze', component: ArticleListWithIntro, props: {categoryId: CONSULTANCIES_CATEGORY_ID, pageSlug: CONSULTANCES_INTRO_SLUG} },

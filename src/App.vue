@@ -48,18 +48,17 @@ export default {
   main{
     min-height: 100vh;
   }
-  a:hover{
-      text-decoration: underline;
-  }
 
   a {
     color: #000;
     transition: 0.2s;
+    text-decoration: underline;
   }
 
   a:hover {
     color: #ef2673;
     transition: 0.2s;
+    text-decoration: underline;
   }
 
   .button, .button:hover{
