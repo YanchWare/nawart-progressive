@@ -46,7 +46,6 @@ export default {
     renderComponent () {
       this.videoId = this.videoIdByProjectId[this.projectId]
       this.pageSlug = this.pageSlugByProjectId[this.projectId]
-      console.log(this.pageSlug)
     }
   },
 

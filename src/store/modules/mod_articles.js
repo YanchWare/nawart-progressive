@@ -34,6 +34,7 @@ const actions = {
       console.error(err)
     })
   },
+
   fetchArticles ({ state, commit }, {languageCode, startFromClean, type, filters}) {
     const allArticles = state ? state.allArticles : null
     apiWrapper.getLatestArticles(languageCode, (startFromClean ? null : allArticles), filters).then(response => {
@@ -47,11 +48,26 @@ const actions = {
     })
     commit(type || types.NEW_ARTICLES_REQUESTED)
   },
-  // TODO: Fetch a single article if it has not been updated in a long time. Remove it if it respond with a 404 error.
+
+  fetchArticle ({ commit }, {articleSlug, languageCode}) {
+    apiWrapper.getPost(articleSlug, languageCode).then(response => {
+      if (response.status.code === 200 && response.entity) {
+        commit(types.NEW_ARTICLE_RECEIVED, {entity: response.entity, languageCode})
+      } else if (response.status.code === 404) {
+        commit(types.ARTICLE_REMOVED, {articleSlug, languageCode})
+      }
+    }).catch(err => {
+      // TODO: handle error - Notify user
+      console.error(err)
+    })
+  },
+
   fetchPage ({ commit }, {pageSlug, languageCode}) {
     apiWrapper.getPage(pageSlug, languageCode).then(response => {
       if (response.status.code === 200 && response.entity) {
         commit(types.NEW_PAGE_RECEIVED, {entity: response.entity, languageCode})
+      } else if (response.status.code === 404) {
+        commit(types.PAGE_REMOVED, {pageSlug, languageCode})
       }
     }).catch(err => {
       // TODO: handle error - Notify user
@@ -66,19 +82,16 @@ const mutations = {
     state.articleLoading = true
   },
   [types.NEW_PAGE_RECEIVED] (state, pageInfo) {
-    if (!pageInfo) {
-      return
-    }
-    const page = pageInfo.entity
-    const languageCode = pageInfo.languageCode
-    if (!page || !page.length > 0 || !languageCode) {
-      return
-    }
-    page.lastUpdated = Date.now()
-    const newAllArticles = { ...state.allArticles }
-    newAllArticles[page[0].slug] = page[0]
-    state.allArticles = newAllArticles
-    articlesDb.set(ALL_ARTICLES_DBKEY + languageCode, state.allArticles)
+    addNewContents(state, pageInfo)
+  },
+  [types.NEW_ARTICLE_RECEIVED] (state, articleInfo) {
+    addNewContents(state, articleInfo)
+  },
+  [types.PAGE_REMOVED] (state, pageInfo) {
+    removeContents(state, pageInfo)
+  },
+  [types.ARTICLE_REMOVED] (state, articleInfo) {
+    removeContents(state, articleInfo)
   },
   [types.ALL_ARTICLES_LOADED] (state, allArticles) {
     if (allArticles) {
@@ -154,6 +167,31 @@ const mutations = {
 
     articlesDb.set(ALL_ARTICLES_DBKEY + languageCode, state.allArticles)
   }
+}
+
+// Private helpers
+
+const addNewContents = (state, contentInfo) => {
+  if (!contentInfo) {
+    return
+  }
+  const content = contentInfo.entity
+  const languageCode = contentInfo.languageCode
+  if (!content || !content.length > 0 || !languageCode) {
+    return
+  }
+  content.lastUpdated = Date.now()
+  const newAllArticles = { ...state.allArticles }
+  newAllArticles[content[0].slug] = content[0]
+  state.allArticles = newAllArticles
+  articlesDb.set(ALL_ARTICLES_DBKEY + languageCode, state.allArticles)
+}
+
+const removeContents = (state, {contentSlug, languageCode}) => {
+  const newAllArticles = { ...state.allArticles }
+  delete newAllArticles[contentSlug]
+  state.allArticles = newAllArticles
+  articlesDb.delete(ALL_ARTICLES_DBKEY + languageCode)
 }
 
 export default {

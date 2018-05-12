@@ -18,7 +18,7 @@
 
 <script>
 import Loading from '../components/Generic/Loading'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import { getCategories } from '../utilities/apiSupport'
 
 export default {
@@ -55,12 +55,15 @@ export default {
   },
 
   methods: {
+    ...mapActions([
+      'fetchArticle'
+    ]),
     render () {
       if (this.allArticles) {
-        const article = this.allArticles[this.$route.params.articleSlug]
+        const articleSlug = this.$route.params.articleSlug
+        const article = this.allArticles[articleSlug]
         if (article) {
           this.article = article
-          // TODO check last update and if too old request an update from backend
           if (this.allCategories) {
             this.categoriesHtml = getCategories(this.article.categories, this.allCategories.categoriesById)
           }
@@ -68,13 +71,14 @@ export default {
             this.author = this.allAuthors.authorsById[article.author].name
           }
         }
-      } else {
-        this.fetchContents()
+        if (!article || ((Date.now - article.lastUpdated) / 3.6e6) > 5) {
+          this.fetchContents(articleSlug)
+        }
       }
     },
 
-    fetchContents () {
-
+    fetchContents (articleSlug) {
+      this.fetchArticle({articleSlug, languageCode: this.$i18n.locale()})
     }
   }
 }

@@ -45,6 +45,13 @@ const getPage = (pageSlug, languageCode) => {
   })
 }
 
+const getPost = (postSlug, languageCode) => {
+  return client({
+    path: baseEndpoint + (languageCode === 'en' ? '' : languageCode + '/') + articleEndpoint + '?slug=' + postSlug,
+    method: 'GET'
+  })
+}
+
 const buildPostsPath = (languageCode, allArticles, filters) => {
   const articlesIds = allArticles ? Object.keys(allArticles).reduce((previous, current) => {
     if (current && allArticles[current].id) {
@@ -80,5 +87,6 @@ module.exports = {
   getLatestArticles,
   getAllCategories,
   getAllAuthors,
+  getPost,
   getPage
 }
