@@ -7,7 +7,6 @@
       <div class="large-4 small-12 columns">
         <div class="article-information">
           <span class="categories" v-html="categoriesHtml"></span>
-          -
           <span class="datetime">{{ new Date(story.date) | ISODate}}</span>
         </div>
         <div class="article-title">
@@ -83,8 +82,15 @@
   max-height: 50px;
 }
 
-.categories {
+.datetime, .categories {
   text-transform: uppercase;
+  font-size: 0.5em;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 20px;
 }
 
 </style>

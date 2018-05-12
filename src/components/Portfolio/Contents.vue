@@ -3,20 +3,22 @@
     <div class="row">
       <ProjectHeader :articles="articles" :locale="locale" v-if="currentFilters.projects.length === 1" :project-id="this.currentFilters.projects[0]"/>
     </div>
-    <Story v-for="story in storiesToShow" :story="story" :key="story.id"></Story>
+    <div class="mosaic">
+      <SmallArticleExcerpt class="story" v-for="story in storiesToShow" :story="story" :categories="categories" :key="story.id"/>
+    </div>
   </div>
 </template>
 
 <script>
-import Story from './Story'
+import SmallArticleExcerpt from '../Generic/SmallArticleExcerpt'
 import ProjectHeader from './ProjectHeader'
 
 export default {
   name: 'contents',
-  props: ['articles', 'currentFilters', 'locale'],
+  props: ['articles', 'categories', 'currentFilters', 'locale'],
 
   components: {
-    Story,
+    SmallArticleExcerpt,
     ProjectHeader
   },
 
@@ -82,4 +84,26 @@ export default {
   margin: 20px 0;
   z-index: 2;
 }
+@media only screen and (min-width: 40.063em) { 
+  .mosaic{
+    line-height: 0;
+    
+    -webkit-column-count: 3;
+    -webkit-column-gap:   0px;
+    -moz-column-count:    3;
+    -moz-column-gap:      0px;
+    column-count:         3;
+    column-gap:           0px;  
+  }
+}
+
+.story{
+  display: inline-block;
+  padding: 50px 50px 0px 50px;
+  border: 1px solid #ef2673;
+}
+.story img{
+  max-width: 300px;
+}
+
 </style>

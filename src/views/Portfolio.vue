@@ -14,7 +14,7 @@
     <hr/>
     <div class="row">
       <div class="small-12 columns">
-        <Contents :articles="allArticles" :locale="$i18n.locale()" :currentFilters="portfolioFilters"></Contents>
+        <Contents :articles="allArticles" :categories="allCategories" :locale="$i18n.locale()" :currentFilters="portfolioFilters"></Contents>
         <Loading v-if="articleLoading"/>
       </div>
     </div>
