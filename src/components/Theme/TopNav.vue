@@ -2,6 +2,7 @@
   <div id="top-nav">
     <div class="multilevel-offcanvas off-canvas position-left" id="offCanvasLeft" data-off-canvas>
       <ul class="vertical menu">
+        <li><router-link to="/"><img id="header-logo" src="/static/img/NawartLogo_Header.png" alt="" /></router-link></li>
         <li><router-link to="/about">{{$t('About')}}</router-link></li>
         <li><router-link to="/portfolio">Portfolio</router-link></li>
         <li><router-link to="/magazine">Magazine</router-link></li>
@@ -16,6 +17,7 @@
             <li><a @click="changeLanguage('en')">English</a></li>
             <li><a @click="changeLanguage('it')">Italiano</a></li>
             <li><a @click="changeLanguage('fr')">Français</a></li>
+            <li><a @click="changeLanguage('de')">Deutsch</a></li>
           </ul>
         </li>
       </ul>
@@ -132,6 +134,9 @@ export default {
   },
 
   mounted () {
+    window.$('#offCanvasLeft li').click(() => {
+      this.closeOffCanvas()
+    })
   }
 }
 </script>
@@ -317,6 +322,33 @@ hr {
 #header-logo {
   padding: 10px;
   max-height: 150px;
+}
+
+@media screen and (max-width: 39.9375em) {
+  #header-logo {
+    max-height: 100px;
+  }
+  .nav-bar {
+    margin-top: 15px;
+  }
+}
+
+#offCanvasLeft {
+  background-color: #fff;
+  text-transform: uppercase;
+  font-family: Florence;
+}
+
+#offCanvasLeft a, #offCanvasLeft i {
+  color: black;
+}
+
+#offCanvasLeft li {
+  border-bottom: 1px #ccc solid
+}
+
+#offCanvasLeft ul.social-links li {
+  border-bottom: 0px;  
 }
 
 </style>
