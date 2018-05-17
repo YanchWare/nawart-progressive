@@ -187,8 +187,8 @@ hr {
 }
 
 #top-nav button {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: -5px;
 }
 
 #top-nav .search{
@@ -202,20 +202,14 @@ hr {
   width: 100vw;
   background-color: #fff;
   z-index: 100;
+  -webkit-transition:all 300ms ease-in-out;
+  -moz-transition:all 300ms ease-in-out;
+  -o-transition:all 300ms ease-in-out;
+  transition:all 300ms ease-in-out;
 }
 
 #top-nav.small-nav {
-  height: 71px;
-  -webkit-transition:width 300ms ease-in-out, height 300ms ease-in-out;
-  -moz-transition:width 300ms ease-in-out, height 300ms ease-in-out;
-  -o-transition:width 300ms ease-in-out, height 300ms ease-in-out;
-  transition:width 300ms ease-in-out, height 300ms ease-in-out;
-}
-
-.hidden-logo {
-  position: absolute;
-  height: 20px;
-  opacity: 0%;
+  top: -150px;
 }
 
 .nav-bar {
@@ -269,9 +263,11 @@ hr {
 
 @media screen and (max-width: 39.9375em) {
   #top-nav button, #top-nav .search {
-    position: absolute;
     padding: 0.9rem;
-    top: 0;
+  }
+
+  #top-nav.small-nav{
+    height: 190px;
   }
 }
 
