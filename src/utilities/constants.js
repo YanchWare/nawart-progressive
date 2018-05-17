@@ -20,11 +20,9 @@ const FILTER_AUTHOR_TYPE = 'FILTER_AUTHOR_TYPE'
 // Categories
 const BLOG_CATEGORY_ID = 9
 const CONSULTANCIES_CATEGORY_ID = 937
-const NGO_CATEGORY_ID = 1113
 
 // Pages
 const CONSULTANCES_INTRO_SLUG = 'nawart-pwa-consultances'
-const NGO_INTRO_SLUG = 'nawart-pwa-visibility-ngo'
 
 module.exports = {
   NEWEST_ARTICLES_DBKEY,
@@ -42,7 +40,5 @@ module.exports = {
   ALL_STATISTICS_DBKEY,
   BLOG_CATEGORY_ID,
   CONSULTANCIES_CATEGORY_ID,
-  CONSULTANCES_INTRO_SLUG,
-  NGO_INTRO_SLUG,
-  NGO_CATEGORY_ID
+  CONSULTANCES_INTRO_SLUG
 }

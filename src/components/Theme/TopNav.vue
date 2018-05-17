@@ -7,7 +7,6 @@
         <li><router-link to="/portfolio">Portfolio</router-link></li>
         <li><router-link to="/magazine">Magazine</router-link></li>
         <li><router-link to="/consulenze">{{$t('Consultancies')}}</router-link></li>
-        <li><router-link to="/visibility-ngo">{{$t('Visibility NGO')}}</router-link></li>
         <li><router-link to="/category/blog">Blog</router-link></li>
         <li><router-link to="/contacts">{{$t('Contacts')}}</router-link></li>
       </ul>
@@ -56,7 +55,6 @@
               <li><router-link to="/portfolio" :class="{'active': subIsActive('/portfolio')}">Portfolio</router-link></li>
               <li><router-link to="/magazine" :class="{'active': subIsActive('/magazine')}">Magazine</router-link></li>
               <li><router-link to="/consulenze" :class="{'active': subIsActive('/consulenze')}">{{$t('Consultancies')}}</router-link></li>
-              <li><router-link to="/visibility-ngo" :class="{'active': subIsActive('/visibility-ngo')}">{{$t('Visibility NGO')}}</router-link></li>
               <li><router-link to="/category/blog" :class="{'active': subIsActive('/category/blog/')}">Blog</router-link></li>
               <li><router-link to="/contacts" :class="{'active': subIsActive('/contacts/')}">{{$t('Contacts')}}</router-link></li>
               <li class="has-submenu">
