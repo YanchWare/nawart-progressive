@@ -2,7 +2,7 @@
   <div id="top-nav">
     <div class="multilevel-offcanvas off-canvas position-left" id="offCanvasLeft" data-off-canvas>
       <ul class="vertical menu">
-        <li><router-link to="/"><img id="header-logo" src="/static/img/NawartLogo_Header.png" alt="" /></router-link></li>
+        <li><router-link to="/"><img class="header-logo" src="/static/img/NawartLogo_Header.png" alt="" /></router-link></li>
         <li><router-link to="/about">{{$t('About')}}</router-link></li>
         <li><router-link to="/portfolio">Portfolio</router-link></li>
         <li><router-link to="/magazine">Magazine</router-link></li>
@@ -34,7 +34,7 @@
         <div class="nav-bar-left">
           <ul class="menu">
             <li>
-              <button class="offcanvas-trigger hide-for-medium" type="button">
+              <button class="offcanvas-trigger hidden-logo-for-medium" type="button">
                 <span class="offcanvas-trigger-text"></span>
                 <div class="hamburger" @click="closeOffCanvas">
                   <span class="line"></span>
@@ -46,7 +46,7 @@
           </ul>
         </div>
         <div class="nav-bar-center text-center">
-          <router-link to="/"><img id="header-logo" src="/static/img/NawartLogo_Header.png" alt="" /></router-link>
+          <router-link to="/"><img class="header-logo" src="/static/img/NawartLogo_Header.png" alt="" /></router-link>
 
         <hr>
         <div class="top-bar show-for-medium" id="responsive-menu">
@@ -77,7 +77,7 @@
         <div class="nav-bar-right">
           <ul class="menu">
             <li>
-              <button class="offcanvas-trigger">
+              <button class="search">
                 <svg version="1.1" id="search_icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
                   <path d="M19.769,18.408l-5.408-5.357c1.109-1.364,1.777-3.095,1.777-4.979c0-4.388-3.604-7.958-8.033-7.958
                     c-4.429,0-8.032,3.57-8.032,7.958s3.604,7.958,8.032,7.958c1.805,0,3.468-0.601,4.811-1.6l5.435,5.384
@@ -137,6 +137,27 @@ export default {
     window.$('#offCanvasLeft li').click(() => {
       this.closeOffCanvas()
     })
+    const options = {
+      onScroll: function () {
+        const element = window.$('.header-logo')
+        const topNav = window.$('#top-nav')
+        const scrollTop = window.$(window).scrollTop()
+        if (scrollTop <= 0) {
+          if (this.hidden) {
+            element.removeClass('hidden-logo')
+            topNav.removeClass('small-nav')
+            this.hidden = false
+          }
+        } else {
+          if (!this.hidden) {
+            element.addClass('hidden-logo')
+            topNav.addClass('small-nav')
+            this.hidden = true
+          }
+        }
+      }
+    }
+    window.$('main').scrollfire(options)
   }
 }
 </script>
@@ -166,22 +187,42 @@ hr {
 }
 
 #top-nav button {
-  position: relative;
-  top: -50px;
+  position: absolute;
+  top: 0;
+}
+
+#top-nav .search{
+  right: 0;
+  padding: 1.6rem;
 }
 
 #top-nav {
   position: fixed;
-  top: 0;
+  top: -10px;
   width: 100vw;
   background-color: #fff;
   z-index: 100;
+}
+
+#top-nav.small-nav {
+  height: 71px;
+  -webkit-transition:width 300ms ease-in-out, height 300ms ease-in-out;
+  -moz-transition:width 300ms ease-in-out, height 300ms ease-in-out;
+  -o-transition:width 300ms ease-in-out, height 300ms ease-in-out;
+  transition:width 300ms ease-in-out, height 300ms ease-in-out;
+}
+
+.hidden-logo {
+  position: absolute;
+  height: 20px;
+  opacity: 0%;
 }
 
 .nav-bar {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  background-color: #fff;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -227,8 +268,10 @@ hr {
 }
 
 @media screen and (max-width: 39.9375em) {
-  .nav-bar .offcanvas-trigger {
+  #top-nav button, #top-nav .search {
+    position: absolute;
     padding: 0.9rem;
+    top: 0;
   }
 }
 
@@ -319,17 +362,20 @@ hr {
   margin-bottom: 0;
 }
 
-#header-logo {
+.header-logo {
   padding: 10px;
   max-height: 150px;
 }
 
 @media screen and (max-width: 39.9375em) {
-  #header-logo {
+  .header-logo {
     max-height: 100px;
   }
   .nav-bar {
     margin-top: 15px;
+  }
+  .hidden-logo {
+    position: relative;
   }
 }
 
