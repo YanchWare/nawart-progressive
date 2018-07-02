@@ -2,7 +2,7 @@ import rest from 'rest'
 import mime from 'rest/interceptor/mime'
 
 const client = rest.wrap(mime)
-const baseEndpoint = '//nawartpress.com/'
+const baseEndpoint = '//backend.nawartpress.com/'
 const categoryEndpoint = 'wp-json/wp/v2/categories'
 const articleEndpoint = 'wp-json/wp/v2/posts'
 const pageEndpoint = 'wp-json/wp/v2/pages'
