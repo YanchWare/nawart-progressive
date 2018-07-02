@@ -12,7 +12,6 @@
 <script>
 import Leaflet from 'leaflet'
 import ScrollDown from './ScrollDown'
-import { mapActions } from 'vuex'
 
 export default {
   name: 'portfolioMap',
@@ -64,10 +63,6 @@ export default {
     this.initMap()
   },
   methods: {
-    ...mapActions([
-      'activateCountryFilter',
-      'deactivateCountryFilter'
-    ]),
     initMap () {
       this.myMap = this.myMap ? this.myMap : Leaflet.map('portfolio-map', { zoomControl: false }).setView([37.7220031, 15.1464744], 11)
       this.myMap.scrollWheelZoom.disable()
@@ -123,13 +118,7 @@ export default {
           icon.parent().find('#' + className).css('transform', icon.css('transform'))
         })
         markerOnMap.on('click', () => {
-          const countryId = parseInt(marker.id)
-          const filterChecked = this.currentFilters.countries ? this.currentFilters.countries.indexOf(countryId) > -1 : false
-          if (filterChecked) {
-            this.deactivateCountryFilter(countryId)
-          } else {
-            this.activateCountryFilter(countryId)
-          }
+          this.$router.push({ name: 'locations', params: { name: marker.name } })
         })
         return markerOnMap
       })
